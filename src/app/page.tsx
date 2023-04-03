@@ -1,7 +1,12 @@
+import { Header } from "@fnapp/components/Header/Header"
+
 export default function Home() {
   return (
-    <main>
-      Hello, does this have roboto
-    </main>
+    <>
+      <Header />
+      <main>
+      
+      </main>
+    </>
   )
 }

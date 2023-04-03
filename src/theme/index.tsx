@@ -65,5 +65,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: ${RobotoCondensed.style.fontFamily};
+    color: ${({ theme }) => theme.colors.special.white};
+    background-color: ${({ theme }) => theme.colors.special.black};
   }
 `;
