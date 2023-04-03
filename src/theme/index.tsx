@@ -1,4 +1,6 @@
-import { ReactNode } from 'react';
+'use client';
+
+import React, { ReactNode } from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Roboto_Condensed } from 'next/font/google';
 
@@ -41,9 +43,11 @@ const theme = {
   }
 };
 
-export const Theme: React.FC<{ children: ReactNode }> = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
+export const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme}>{children}</ThemeProvider>
+  );
+};
 
 const RobotoCondensed = Roboto_Condensed({ subsets: ['latin'], weight: ['300', '400', '700'] });
 
