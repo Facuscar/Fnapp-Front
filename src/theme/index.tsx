@@ -4,6 +4,8 @@ import React, { ReactNode } from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { Roboto_Condensed } from 'next/font/google';
 
+const RobotoCondensed = Roboto_Condensed({ subsets: ['latin'], weight: ['300', '400', '700'] });
+
 const theme = {
   colors: {
     primary: {
@@ -40,7 +42,12 @@ const theme = {
     xl: '4rem',
     xxl: '8rem',
     doubleL: '6rem',
-  }
+  },
+  fontWeight: {
+    s: 300,
+    m: 400,
+    l: 700,
+  },
 };
 
 export const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -48,8 +55,6 @@ export const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
   );
 };
-
-const RobotoCondensed = Roboto_Condensed({ subsets: ['latin'], weight: ['300', '400', '700'] });
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -59,6 +64,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: ${RobotoCondensed};
+    font-family: ${RobotoCondensed.style.fontFamily};
   }
 `;
