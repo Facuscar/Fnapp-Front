@@ -1,12 +1,10 @@
-import { ReactNode } from "react";
-
-import * as S from './Header.styles';
+import * as S from "./Header.styles";
 
 export const Header: React.FC = () => {
 
   return (
     <S.HeaderWrapper>
-      Header
+      <S.Name>Fnapp</S.Name>
     </S.HeaderWrapper>
   );
 }
