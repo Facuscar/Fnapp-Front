@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from "react";
+import Link, { LinkProps } from "next/link";
 import styled from "styled-components";
 
 import Heading from "@fnapp/components/Atoms/Heading";
@@ -26,13 +27,14 @@ export const Name: React.FC<{ children: string }> = ({children}) => (
   <StyledHeading as="h1">{children}</StyledHeading>
 );
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled(Link)`
   align-items: center;
   display: flex;
   gap: ${({ theme }) => theme.spacing.s};
   padding: ${({ theme }) => theme.spacing.s};
+  text-decoration: none;
 `
 
-export const LogoWrapper: React.FC<{ children: ReactNode }> = ({ children }) => (
-  <StyledWrapper>{children}</StyledWrapper>
+export const LogoWrapper: React.FC<LinkProps & { children: ReactNode }> = ({ children, href }) => (
+  <StyledWrapper href={href}>{children}</StyledWrapper>
 );
