@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
         <Logo />
         <S.Name>Fnapp</S.Name>
       </S.LogoWrapper>
-      <Button>Log in</Button>
+      <S.LogInButton>Log in</S.LogInButton>
     </S.HeaderWrapper>
   );
 }
