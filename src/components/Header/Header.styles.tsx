@@ -13,6 +13,10 @@ const HEADER_HEIGHT = px2rem(70);
 const USER_HEIGHT= px2rem(25);
 
 const StyledHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${({ theme }) => theme.spacing.m};
   height: ${HEADER_HEIGHT};
 `;
 
@@ -50,7 +54,6 @@ const StyledButton = styled(Button)`
 
   & svg {
     height: ${USER_HEIGHT};
-    stroke-width: 10;
     margin-right: ${px2rem(10)};
   }
 `;
