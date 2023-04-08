@@ -55,6 +55,7 @@ const StyledButton = styled(Button)`
   & svg {
     height: ${USER_HEIGHT};
     margin-right: ${px2rem(10)};
+    margin-bottom: ${px2rem(2)};
   }
 `;
 
