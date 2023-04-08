@@ -1,7 +1,7 @@
 import * as S from "./Header.styles";
 
-import Button from "@fnapp/components/Atoms/Button";
 import Logo from "@fnapp/components/Atoms/Logo";
+import Input from "../Atoms/Form/Input";
 import { Routes } from "@fnapp/constants/routes";
 
 export const Header: React.FC = () => {
