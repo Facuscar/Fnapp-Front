@@ -1,9 +1,11 @@
-import * as S from "./Header.styles";
-
 import Logo from "@fnapp/components/Atoms/Logo";
 import { Routes } from "@fnapp/constants/routes";
 
-export const Header: React.FC<{ openModal: () => void }> = ({ openModal }) => {
+import LogIn from "./LogIn";
+
+import * as S from "./Header.styles";
+
+export const Header: React.FC = () => {
 
   return (
     <S.HeaderWrapper>
@@ -11,7 +13,7 @@ export const Header: React.FC<{ openModal: () => void }> = ({ openModal }) => {
         <Logo />
         <S.Name>Fnapp</S.Name>
       </S.LogoWrapper>
-      <S.LogInButton >Log in</S.LogInButton>
+      <LogIn />
     </S.HeaderWrapper>
   );
 }
