@@ -11,7 +11,7 @@ export const Header: React.FC<{ openModal: () => void }> = ({ openModal }) => {
         <Logo />
         <S.Name>Fnapp</S.Name>
       </S.LogoWrapper>
-      <S.LogInButton onClick={openModal}>Log in</S.LogInButton>
+      <S.LogInButton >Log in</S.LogInButton>
     </S.HeaderWrapper>
   );
 }

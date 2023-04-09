@@ -14,6 +14,9 @@ const Modal: React.FC<ModalProps> = ({ children, isVisible, closeModal }) => {
   return (
     <>
       <S.ModalLayout />
+      <S.CloseModalButton onClick={closeModal}>
+        X
+      </S.CloseModalButton>
       <S.ModalWrapper>
         {children}
       </S.ModalWrapper>
