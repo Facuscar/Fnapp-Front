@@ -25,6 +25,17 @@ export const ModalWrapper = styled.div`
   transform: translate(-50%, -50%);
   color: ${({ theme }) => theme.colors.special.black};
   z-index: 3;
+
+  animation: fadeIn 300ms;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 export const CloseModalButton = styled(Button)`
