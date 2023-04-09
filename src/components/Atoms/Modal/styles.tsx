@@ -3,6 +3,7 @@
 import styled from "styled-components";
 
 import Button from "@fnapp/components/Atoms/Button";
+import { px2rem } from "@fnapp/utils/px2rem";
 
 export const ModalLayout = styled.div`
   top: 0;
@@ -33,4 +34,6 @@ export const CloseModalButton = styled(Button)`
   margin-top: ${({ theme }) => theme.spacing.l};
   margin-right: ${({ theme }) => theme.spacing.l};
   z-index: 3;
+  font-weight: ${({ theme }) => theme.fontWeight.l};
+  font-size: ${px2rem(20)};
 `;

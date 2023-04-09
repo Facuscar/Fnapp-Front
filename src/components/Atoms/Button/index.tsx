@@ -9,6 +9,9 @@ type ButtonProps = {
 
 const Button: React.FC<ButtonProps> = ({ variant = 'primary', ...props}) => {
   if (variant === 'primary') return <S.PrimaryButton {...props} />
+  
+  if (variant === 'ghost') return <S.GhostButton {...props} />
+
   return <button></button>
 }
 

@@ -15,3 +15,11 @@ export const PrimaryButton: React.FC = styled.button`
     background-color: ${({ theme }) => theme.colors.primary.l};
   }
 `;
+
+export const GhostButton: React.FC = styled.button`
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.primary.m};
+  padding: ${({ theme }) => theme.spacing.xs};
+  border: 2px solid ${({ theme }) => theme.colors.primary.m};
+  cursor: pointer;
+`
