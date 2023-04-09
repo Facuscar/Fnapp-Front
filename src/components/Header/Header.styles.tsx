@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import Link, { LinkProps } from "next/link";
 import styled from "styled-components";
 
@@ -59,8 +59,8 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export const LogInButton: React.FC<{ children: string }> = ({ children }) => (
-  <StyledButton>
+export const LogInButton: React.FC<HTMLAttributes<HTMLButtonElement> & { children: string }> = ({ children, ...props }) => (
+  <StyledButton {...props}>
     <User />
     {children}
   </StyledButton>
