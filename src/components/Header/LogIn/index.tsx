@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import Modal from '@fnapp/components/Atoms/Modal';
 
+import LogInForm from './LogInForm';
 import * as S from './styles';
 
 const LogIn: React.FC = () => {
@@ -23,7 +24,7 @@ const LogIn: React.FC = () => {
         Log in
       </S.LogInButton>
       <Modal isVisible={isFormVisible} closeModal={closeModal}>
-        <h1>Test modal</h1>
+        <LogInForm />
       </Modal>
     </>
   );

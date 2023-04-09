@@ -11,13 +11,14 @@ export const ModalLayout = styled.div`
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.special.black};
-  opacity: 0.5;
+  opacity: 0.65;
   position: absolute;
   z-index: 2;
 `
 
 export const ModalWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.special.white};
+  border-radius: ${px2rem(5)};
   padding: ${({ theme }) => theme.spacing.s};
   position: absolute;
   top: 50%;

@@ -1,5 +1,3 @@
-'use client';
-
 import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
@@ -13,8 +11,6 @@ const USER_HEIGHT= px2rem(25);
 const StyledButton = styled(Button)`
   display: flex;
   align-items: center;
-  text-transform: uppercase;
-  font-weight: ${({ theme }) => theme.fontWeight.l};
 
   & svg {
     height: ${USER_HEIGHT};

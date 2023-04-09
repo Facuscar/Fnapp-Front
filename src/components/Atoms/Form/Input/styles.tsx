@@ -15,5 +15,18 @@ export const Input = styled.input`
   width: 100%;
   margin-top: ${({ theme }) => theme.spacing.xs};
   padding: ${({ theme }) => theme.spacing.xs};
-  border-radius: ${px2rem(5)};
+  border: none;
+  border-radius: ${px2rem(3)};
+  border-bottom: 1px solid;
+  
+  &::placeholder {
+    color: #3b3b3b;
+  }
+
+  &:focus {
+    background-color: #f3f3f3;
+    outline: none;
+  }
 `
+
+//TODO: Change those grays into a theme color

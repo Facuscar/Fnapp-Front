@@ -5,7 +5,7 @@ import * as S from './styles';
 type InputProps = {
   name: string;
   placeholder: string;
-  type: 'text' | 'number' | 'password' | 'search';
+  type: 'text' | 'number' | 'password' | 'search' | 'email';
   id?: string;
   defaultValue?: string;
 };
