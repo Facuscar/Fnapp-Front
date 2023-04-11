@@ -9,7 +9,7 @@ import { ButtonProps } from ".";
 const AnimatedWrapper = styled.div`
   display: inline-block;
   position: relative;
-  width: calc(50% - 100px);
+  width: calc(50% - ${px2rem(100)});
   height: ${px2rem(14)};
 
   & div {
@@ -18,7 +18,7 @@ const AnimatedWrapper = styled.div`
     left: ${px2rem(8)};
     width: ${px2rem(16)};
     background: #fff;
-    animation: loading-animation 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    animation: loading-animation 600ms cubic-bezier(0, 0.5, 0.5, 1) infinite;
   }
 
   & div:nth-child(1) {
