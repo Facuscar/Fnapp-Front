@@ -24,4 +24,5 @@ export const FormTitle: React.FC<{ children: string }> = ({children}) => (
 export const LogInButton = styled(Button)`
   margin-top: ${({ theme }) => theme.spacing.s};
   font-size: ${px2rem(14)};
+  width: 100%;
 `;

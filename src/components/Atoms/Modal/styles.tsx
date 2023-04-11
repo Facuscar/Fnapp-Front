@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Button from "@fnapp/components/Atoms/Button";
 import { px2rem } from "@fnapp/utils/px2rem";
 
+const MODAL_MAX_WIDTH = 450;
+
 export const ModalLayout = styled.div`
   top: 0;
   bottom: 0;
@@ -25,6 +27,8 @@ export const ModalWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   color: ${({ theme }) => theme.colors.special.black};
+  width: 90%;
+  max-width: ${px2rem(MODAL_MAX_WIDTH)};
   z-index: 3;
 
   animation: fadeIn 300ms;

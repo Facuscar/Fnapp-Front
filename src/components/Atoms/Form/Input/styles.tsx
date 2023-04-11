@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 export const InputWrapper = styled.div`
   margin-top: ${({ theme }) => theme.spacing.s};
+  width: 100%;
 `
 
 export const InputLabel = styled.label`
