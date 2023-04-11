@@ -2,9 +2,10 @@ import { HTMLAttributes, ReactNode } from "react";
 
 import * as S from './styles';
 
-type ButtonProps = {
+export type ButtonProps = {
   children?: ReactNode;
   variant?: 'primary' | 'secondary' | 'ghost';
+  isLoading?: boolean;
 } & HTMLAttributes<HTMLButtonElement>;
 
 const Button: React.FC<ButtonProps> = ({ variant = 'primary', ...props}) => {
@@ -12,7 +13,7 @@ const Button: React.FC<ButtonProps> = ({ variant = 'primary', ...props}) => {
   
   if (variant === 'ghost') return <S.GhostButton {...props} />
 
-  return <button></button>
+  return <button {...props}></button>
 }
 
 export default Button;

@@ -11,7 +11,7 @@ const LogInForm: React.FC = () => {
         Please enter your email address
       </S.FormTitle>
       <Input type='email' name='Email' placeholder='example@example.com' />
-      <S.LogInButton>
+      <S.LogInButton isLoading>
         Continue
       </S.LogInButton>
 
