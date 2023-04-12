@@ -1,4 +1,4 @@
-import { RefObject, SyntheticEvent, useRef, useState } from 'react';
+import { SyntheticEvent, useRef, useState } from 'react';
 
 import Logo from '@fnapp/components/Atoms/Logo';
 import Input from '@fnapp/components/Atoms/Form/Input';
@@ -10,8 +10,6 @@ const LogInForm: React.FC = () => {
   const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const emailRef = useRef<HTMLInputElement>(null);
-
-  console.log(isEmailValid);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -36,7 +34,6 @@ const LogInForm: React.FC = () => {
       <S.LogInButton isLoading={isLoading} type='submit'>
         Continue
       </S.LogInButton>
-
     </S.Form>
   );
 };
