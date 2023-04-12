@@ -5,6 +5,7 @@ import Input from '@fnapp/components/Atoms/Form/Input';
 import { useState } from 'react';
 
 const LogInForm: React.FC = () => {
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleClick = () => {
