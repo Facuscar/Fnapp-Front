@@ -15,10 +15,10 @@ const theme = {
       l: '#038218',
     },
     secondary: {
-      xs: '#00f2fa',
-      s: '#02d7de',
-      m: '#02c0c7',
-      l: '#009499',
+      xs: '#6303bd',
+      s: '#4d0194',
+      m: '#3b0072',
+      l: '#240046',
     },
     special: {
       white: '#FFF',

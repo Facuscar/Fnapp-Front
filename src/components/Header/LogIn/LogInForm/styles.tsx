@@ -5,11 +5,10 @@ import Button from "@fnapp/components/Atoms/Button";
 import { px2rem } from "@fnapp/utils/px2rem";
 
 export const Form = styled.form`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  
-  padding: 0 ${({ theme }) => theme.spacing.s};
+  width: 100%;
 `;
 
 const StyledHeading = styled(Heading)`

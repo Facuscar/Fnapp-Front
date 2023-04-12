@@ -26,7 +26,6 @@ const LogInForm: React.FC = () => {
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <Logo />
       <S.FormTitle>
         Please enter your email address
       </S.FormTitle>
