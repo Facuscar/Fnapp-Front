@@ -4,7 +4,7 @@ import Heading from "@fnapp/components/Atoms/Heading";
 import Button from "@fnapp/components/Atoms/Button";
 import { px2rem } from "@fnapp/utils/px2rem";
 
-export const FormWrapper = styled.div`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;

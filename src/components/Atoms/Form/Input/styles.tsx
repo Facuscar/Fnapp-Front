@@ -18,6 +18,8 @@ export const Input = styled.input`
   padding: ${({ theme }) => theme.spacing.xs};
   border: none;
   border-radius: ${px2rem(3)};
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
   border-bottom: 1px solid;
   
   &::placeholder {

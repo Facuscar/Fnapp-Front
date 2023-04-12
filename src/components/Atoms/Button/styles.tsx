@@ -3,7 +3,7 @@
 import styled from "styled-components";
 
 import { px2rem } from "@fnapp/utils/px2rem";
-import { HTMLAttributes } from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import { ButtonProps } from ".";
 
 const AnimatedWrapper = styled.div`
@@ -59,7 +59,7 @@ const LoadingAnimation: React.FC = (props) => (
   </AnimatedWrapper>
 );
 
-const Button: React.FC<HTMLAttributes<HTMLButtonElement> & ButtonProps> = ({isLoading, children, ...props}) => (
+const Button: React.FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & ButtonProps> = ({isLoading, children, ...props}) => (
   <button {...props}>{isLoading ? <LoadingAnimation /> : children}</button>
 );
 
