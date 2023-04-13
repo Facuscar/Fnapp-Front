@@ -1,7 +1,7 @@
 import { px2rem } from "@fnapp/utils/px2rem";
 import styled from "styled-components";
 
-export const SidebarWrapper = styled.div`
+export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.secondary.l};
   display: flex;
@@ -13,4 +13,16 @@ export const SidebarWrapper = styled.div`
   right: 0;
   width: 100%;
   max-width: ${px2rem(400)};
+  width: ${({ showSidebar }) => showSidebar ? '100%' : 0};
+  overflow: hidden;
+
+  animation: fadeIn 300ms;
+  @keyframes fadeIn {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
 `;

@@ -4,21 +4,24 @@ import Logo from '@fnapp/components/Atoms/Logo';
 import * as S from './styles';
 
 type SidebarProps = {
-  isVisible: boolean;
   closeSidebar: () => void;
   children: ReactNode;
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ children, isVisible, closeSidebar }) => {
-  const [showSidebar, setShowSidebar] = useState();
+const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
+  const [showSidebar, setShowSidebar] = useState<boolean>(true);
 
-  useEffect(() => {
-    
-  }, [isVisible])
+  const handleClick = () => {
+    setShowSidebar(false);
+    setTimeout(() => {
+      closeSidebar();
+    }, 300);
+  }
+  
 
   return (
-    <S.SidebarWrapper>
-      <Logo />
+    <S.SidebarWrapper onClick={handleClick} showSidebar={showSidebar}>
+      <Logo/>
       {children}
     </S.SidebarWrapper>
   );
