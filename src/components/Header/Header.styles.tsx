@@ -12,6 +12,7 @@ const HEADER_HEIGHT = px2rem(70);
 const StyledHeader = styled.header`
   display: flex;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.special.black};
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing.m};
   height: ${HEADER_HEIGHT};

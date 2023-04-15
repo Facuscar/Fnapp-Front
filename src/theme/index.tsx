@@ -20,6 +20,12 @@ const theme = {
       m: '#3b0072',
       l: '#240046',
     },
+    gray: {
+      xs: '#969696',
+      s: '#686868',
+      m: '#444444',
+      l: '#292929',
+    },
     special: {
       white: '#FFF',
       black: '#000'
@@ -66,6 +72,6 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: ${RobotoCondensed.style.fontFamily};
     color: ${({ theme }) => theme.colors.special.white};
-    background-color: ${({ theme }) => theme.colors.special.black};
+    background-color: ${({ theme }) => theme.colors.gray.l};
   }
 `;
