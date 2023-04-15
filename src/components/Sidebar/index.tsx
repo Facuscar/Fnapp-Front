@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Logo from '@fnapp/components/Atoms/Logo';
 
 import * as S from './styles';
@@ -23,7 +23,10 @@ const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
     <>
       <S.SidebarLayout onClick={handleClick} />
       <S.SidebarWrapper showSidebar={showSidebar}>
-        <Logo/>
+        <S.SidebarHeader>
+          <S.SidebarLogo/>
+          <S.CloseButton onClick={handleClick}>X</S.CloseButton>
+        </S.SidebarHeader>
         {children}
       </S.SidebarWrapper>
     </>

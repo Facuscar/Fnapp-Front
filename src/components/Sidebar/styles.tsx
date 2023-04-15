@@ -1,5 +1,8 @@
-import { px2rem } from "@fnapp/utils/px2rem";
 import styled from "styled-components";
+
+import Button from "@fnapp/components/Atoms/Button";
+import Logo from '@fnapp/components/Atoms/Logo';
+import { px2rem } from "@fnapp/utils/px2rem";
 
 export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
   align-items: center;
@@ -47,3 +50,22 @@ export const SidebarLayout = styled.div`
   position: absolute;
   z-index: 2;
 `
+
+export const CloseButton = styled(Button)`
+  flex: 0 1 auto;
+  margin-left: auto;
+`;
+
+export const SidebarHeader = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 100%;
+`;
+
+export const SidebarLogo = styled(Logo)`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+`;
