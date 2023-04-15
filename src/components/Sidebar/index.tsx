@@ -20,10 +20,13 @@ const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
   
 
   return (
-    <S.SidebarWrapper onClick={handleClick} showSidebar={showSidebar}>
-      <Logo/>
-      {children}
-    </S.SidebarWrapper>
+    <>
+      <S.SidebarLayout onClick={handleClick} />
+      <S.SidebarWrapper showSidebar={showSidebar}>
+        <Logo/>
+        {children}
+      </S.SidebarWrapper>
+    </>
   );
   
 };

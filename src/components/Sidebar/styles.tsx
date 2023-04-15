@@ -15,6 +15,7 @@ export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
   max-width: ${px2rem(400)};
   width: '100%';
   overflow: hidden;
+  z-index: 3;
 
   animation: ${({ showSidebar }) => showSidebar ? 'showSidebar' : 'hideSidebar'} 300ms;
   @keyframes showSidebar {
@@ -35,3 +36,14 @@ export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
     }
   }
 `;
+
+export const SidebarLayout = styled.div`
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: ${({ theme }) => theme.colors.special.black};
+  opacity: 0.65;
+  position: absolute;
+  z-index: 2;
+`
