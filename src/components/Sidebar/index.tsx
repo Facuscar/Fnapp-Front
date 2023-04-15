@@ -15,7 +15,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
     setShowSidebar(false);
     setTimeout(() => {
       closeSidebar();
-    }, 300);
+    }, 250);
   }
   
 

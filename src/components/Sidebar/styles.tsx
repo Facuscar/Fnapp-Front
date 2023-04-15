@@ -13,16 +13,25 @@ export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
   right: 0;
   width: 100%;
   max-width: ${px2rem(400)};
-  width: ${({ showSidebar }) => showSidebar ? '100%' : 0};
+  width: '100%';
   overflow: hidden;
 
-  animation: fadeIn 300ms;
-  @keyframes fadeIn {
+  animation: ${({ showSidebar }) => showSidebar ? 'showSidebar' : 'hideSidebar'} 300ms;
+  @keyframes showSidebar {
     0% {
-      width: 0;
+      transform: translateX(${px2rem(500)});
     }
     100% {
-      width: 100%;
+      transform: translateX(${px2rem(0)});
+    }
+  }
+
+  @keyframes hideSidebar {
+    0% {
+      transform: translateX(${px2rem(0)});
+    }
+    100% {
+      transform: translateX(${px2rem(500)});
     }
   }
 `;
