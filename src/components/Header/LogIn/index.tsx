@@ -23,9 +23,10 @@ const LogIn: React.FC = () => {
       <S.LogInButton onClick={openSidebar}>
         Log in
       </S.LogInButton>
-      {isFormVisible && (<Sidebar closeSidebar={closeSidebar}>
-        <LogInForm />
-      </Sidebar>
+      {isFormVisible && (
+        <Sidebar closeSidebar={closeSidebar}>
+          <LogInForm />
+        </Sidebar>
       )}
     </>
   );

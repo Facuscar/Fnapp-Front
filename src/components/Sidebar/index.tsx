@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
-import Logo from '@fnapp/components/Atoms/Logo';
 
 import * as S from './styles';
+import Alert from '../Atoms/Alert';
 
 type SidebarProps = {
   closeSidebar: () => void;
@@ -23,6 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
     <>
       <S.SidebarLayout onClick={handleClick} />
       <S.SidebarWrapper showSidebar={showSidebar}>
+        <Alert />
         <S.SidebarHeader>
           <S.SidebarLogo/>
           <S.CloseButton onClick={handleClick}>X</S.CloseButton>
