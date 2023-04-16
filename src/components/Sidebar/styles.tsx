@@ -4,6 +4,8 @@ import Button from "@fnapp/components/Atoms/Button";
 import Logo from '@fnapp/components/Atoms/Logo';
 import { px2rem } from "@fnapp/utils/px2rem";
 
+const SIDEBAR_MAX_WIDTH = 400;
+
 export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.secondary.l};
@@ -15,7 +17,7 @@ export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
   bottom: 0;
   right: 0;
   width: 100%;
-  max-width: ${px2rem(400)};
+  max-width: ${px2rem(SIDEBAR_MAX_WIDTH)};
   width: '100%';
   overflow: hidden;
   z-index: 3;
@@ -23,7 +25,7 @@ export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
   animation: ${({ showSidebar }) => showSidebar ? 'showSidebar' : 'hideSidebar'} 300ms;
   @keyframes showSidebar {
     0% {
-      transform: translateX(${px2rem(500)});
+      transform: translateX(${px2rem(SIDEBAR_MAX_WIDTH)});
     }
     100% {
       transform: translateX(${px2rem(0)});
@@ -35,7 +37,7 @@ export const SidebarWrapper = styled.div<{ showSidebar: boolean }>`
       transform: translateX(${px2rem(0)});
     }
     100% {
-      transform: translateX(${px2rem(500)});
+      transform: translateX(${px2rem(SIDEBAR_MAX_WIDTH)});
     }
   }
 `;
