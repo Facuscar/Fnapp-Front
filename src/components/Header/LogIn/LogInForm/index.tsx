@@ -1,19 +1,18 @@
+import axios from 'axios';
 import { SyntheticEvent, useRef, useState } from 'react';
 
-import Logo from '@fnapp/components/Atoms/Logo';
 import Input from '@fnapp/components/Atoms/Form/Input';
 import { validateEmail } from '@fnapp/utils/validateEmail';
 
 import * as S from './styles';
 
 const LogInForm: React.FC = () => {
-  const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const emailRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-
     const email = emailRef.current?.value;
 
     if (!email || !validateEmail(email)) {
@@ -21,7 +20,10 @@ const LogInForm: React.FC = () => {
       return;
     }
 
+    setIsLoading(true);
     setIsEmailValid(true);
+    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, { email });
+    setIsLoading(false);
   }
 
   return (
@@ -29,7 +31,14 @@ const LogInForm: React.FC = () => {
       <S.FormTitle>
         Please enter your email address
       </S.FormTitle>
-      <Input type='email' name='Email' placeholder='example@example.com' ref={emailRef} />
+      <Input 
+        type='email' 
+        name='Email' 
+        placeholder='example@example.com' 
+        ref={emailRef} 
+        hasError={!isEmailValid} 
+        errorMessage='Email is not valid'
+      />
       <S.LogInButton isLoading={isLoading} type='submit'>
         Continue
       </S.LogInButton>
