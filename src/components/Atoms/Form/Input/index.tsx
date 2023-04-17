@@ -2,19 +2,19 @@ import React from "react";
 
 import * as S from './styles';
 
-type InputProps = {
+export type InputProps = {
   name: string;
-  placeholder: string;
   type: 'text' | 'number' | 'password' | 'search' | 'email';
   id?: string;
-  defaultValue?: string;
+  hasError?: boolean;
+  errorMessage?: string;
 };
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(({ name, placeholder, id, defaultValue, type}, ref) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({ name, id, type, hasError, errorMessage, ...props }, ref) => {
   return (
     <S.InputWrapper>
       <S.InputLabel htmlFor={id || type}>{name}</S.InputLabel>
-      <S.Input ref={ref} type={type} placeholder={placeholder} defaultValue={defaultValue}/>
+      <S.Input ref={ref} id={id} type={type} hasError={hasError} {...props}/>
     </S.InputWrapper>
     
   );

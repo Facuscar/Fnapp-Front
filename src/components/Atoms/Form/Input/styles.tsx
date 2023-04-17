@@ -1,7 +1,8 @@
 'use client';
+import styled from "styled-components";
+import { lighten } from "polished";
 
 import { px2rem } from "@fnapp/utils/px2rem";
-import styled from "styled-components";
 
 export const InputWrapper = styled.div`
   margin-top: ${({ theme }) => theme.spacing.s};
@@ -12,7 +13,7 @@ export const InputLabel = styled.label`
   text-transform: uppercase;
 `
 
-export const Input = styled.input`
+export const Input = styled.input<{ hasError?: boolean }>`
   width: 100%;
   margin-top: ${({ theme }) => theme.spacing.xs};
   padding: ${({ theme }) => theme.spacing.xs};
@@ -20,16 +21,14 @@ export const Input = styled.input`
   border-radius: ${px2rem(3)};
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  border-bottom: 1px solid;
+  border-bottom: 2px solid ${({ theme, hasError }) => hasError ? theme.colors.special.red : ''};
   
   &::placeholder {
-    color: #3b3b3b;
+    color: ${({ theme }) => theme.colors.gray.l};
   }
 
   &:focus {
-    background-color: #f3f3f3;
+    background-color: ${({ theme }) => lighten(0.35, theme.colors.gray.xs)};
     outline: none;
   }
 `
-
-//TODO: Change those grays into a theme color
