@@ -1,8 +1,8 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 
 import * as S from './styles';
 
-export type InputProps = {
+export type InputProps = HTMLAttributes<HTMLInputElement> & {
   name: string;
   type: 'text' | 'number' | 'password' | 'search' | 'email';
   id?: string;
@@ -15,6 +15,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ name, id, type, 
     <S.InputWrapper>
       <S.InputLabel htmlFor={id || type}>{name}</S.InputLabel>
       <S.Input ref={ref} id={id} type={type} hasError={hasError} {...props}/>
+      { hasError && <S.ErrorMessage>{errorMessage || 'There is an error'}</S.ErrorMessage> }
     </S.InputWrapper>
     
   );

@@ -29,7 +29,7 @@ const LogInForm: React.FC = () => {
       <S.FormTitle>
         Please enter your email address
       </S.FormTitle>
-      <Input type='email' name='Email' placeholder='example@example.com' ref={emailRef}/>
+      <Input type='email' name='Email' placeholder='example@example.com' ref={emailRef} />
       <S.LogInButton isLoading={isLoading} type='submit'>
         Continue
       </S.LogInButton>
