@@ -15,6 +15,14 @@ enum LoginStep {
   PASSWORD = 'password',
 };
 
+type SubmitEmailResponse = {
+  msg: string,
+  user?: {
+    name: string,
+    email: string,
+  },
+};
+
 const LogIn: React.FC = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [step, setStep] = useState<LoginStep>(LoginStep.EMAIL);
@@ -32,8 +40,21 @@ const LogIn: React.FC = () => {
 
     setIsLoading(true);
     setIsEmailValid(true);
-    const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, { email });
-    setIsLoading(false);
+
+    try {
+      const { data } = await axios.post<SubmitEmailResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, { email });
+      if (!data.user) setStep(LoginStep.REGISTER);
+      else setStep(LoginStep.PASSWORD);
+    } catch (error: any) {
+      if (error.response) {
+        console.log(error.response.data.msg);
+        return;
+      }
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+    
   }
 
   const openSidebar = () => {
