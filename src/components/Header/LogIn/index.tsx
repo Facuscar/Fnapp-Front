@@ -68,6 +68,10 @@ const LogIn: React.FC = () => {
     setIsFormVisible(false);
   }
 
+  const closeToast = () => {
+    setError(false);
+  }
+
   return (
     <>
       <S.LogInButton onClick={openSidebar}>
@@ -84,7 +88,7 @@ const LogIn: React.FC = () => {
           )}
         </Sidebar>
       )}
-      {error && <Toast message='Oops.. there was an error. Please try again later' />}
+      {error && <Toast message='Oops.. there was an error. Please try again later' closeToast={closeToast} />}
     </>
   );
 };

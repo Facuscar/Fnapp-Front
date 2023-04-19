@@ -7,7 +7,7 @@ import Button from "@fnapp/components/Atoms/Button";
 
 const TOAST_MIN_WIDTH = 300;
 
-export const ToastWrapper = styled.div`
+export const ToastWrapper = styled.div<{ isClosing: boolean }>`
   background-color: ${({ theme }) => theme.colors.special.red};
   border-radius: ${px2rem(5)};
   position: absolute;
@@ -19,13 +19,22 @@ export const ToastWrapper = styled.div`
   margin-right: ${({ theme }) => theme.spacing.s};
   z-index: 10;
 
-  animation: showToast 300ms;
+  animation: ${({ isClosing }) => isClosing ? 'hideToast' : 'showToast'} 300ms;
   @keyframes showToast {
     0% {
       transform: translateX(${px2rem(TOAST_MIN_WIDTH)});
     }
     100% {
       transform: translateX(${px2rem(0)});
+    }
+  }
+
+  @keyframes hideToast {
+    0% {
+      transform: translateX(${px2rem(0)});
+    }
+    100% {
+      transform: translateX(${px2rem(500)});
     }
   }
 `;
