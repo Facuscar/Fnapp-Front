@@ -8,6 +8,7 @@ import { validateEmail } from '@fnapp/utils/validateEmail';
 
 import LogInForm from './EmailForm';
 import * as S from './styles';
+import Toast from '@fnapp/components/Atoms/Toast';
 
 enum LoginStep {
   EMAIL = 'email',
@@ -28,6 +29,7 @@ const LogIn: React.FC = () => {
   const [step, setStep] = useState<LoginStep>(LoginStep.EMAIL);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
 
   const submitEmail = async (e: SyntheticEvent, emailRef: RefObject<HTMLInputElement>) => {
     e.preventDefault();
@@ -46,6 +48,7 @@ const LogIn: React.FC = () => {
       if (!data.user) setStep(LoginStep.REGISTER);
       else setStep(LoginStep.PASSWORD);
     } catch (error: any) {
+      setError(true);
       if (error.response) {
         console.log(error.response.data.msg);
         return;
@@ -72,8 +75,8 @@ const LogIn: React.FC = () => {
       </S.LogInButton>
       {isFormVisible && (
         <Sidebar closeSidebar={closeSidebar}>
-          {step === LoginStep.EMAIL && ( 
-            <LogInForm 
+          {step === LoginStep.EMAIL && (
+            <LogInForm
               submitEmail={submitEmail} 
               isLoading={isLoading} 
               isEmailValid={isEmailValid} 
@@ -81,6 +84,7 @@ const LogIn: React.FC = () => {
           )}
         </Sidebar>
       )}
+      {error && <Toast message='Oops.. there was an error. Please try again later' />}
     </>
   );
 };

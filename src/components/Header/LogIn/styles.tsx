@@ -2,7 +2,7 @@ import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
 import Button from "@fnapp/components/Atoms/Button";
-import User from "@fnapp/components/Atoms/UserIcon";
+import User from "@fnapp/components/Icons/UserIcon";
 import { px2rem } from "@fnapp/utils/px2rem";
 
 

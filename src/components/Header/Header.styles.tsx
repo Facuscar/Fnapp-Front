@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Heading from "@fnapp/components/Atoms/Heading";
 import { px2rem } from "@fnapp/utils/px2rem";
 
-const HEADER_HEIGHT = px2rem(70);
+export const HEADER_HEIGHT = px2rem(70);
 
 const StyledHeader = styled.header`
   display: flex;
