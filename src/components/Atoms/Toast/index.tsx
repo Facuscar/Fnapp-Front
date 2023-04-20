@@ -13,7 +13,7 @@ const Toast: React.FC<ToastProps> = ({ message, closeToast }) => {
     setIsClosing(true);
     setTimeout(() => {
       closeToast();
-    }, 250);
+    }, 350);
   };
 
   useEffect(() => {
@@ -33,6 +33,7 @@ const Toast: React.FC<ToastProps> = ({ message, closeToast }) => {
         <S.ToastAlert />
         {message}
       </S.ToastText>
+      <S.TimeBar isClosing={isClosing} />
     </S.ToastWrapper>
   );
 };

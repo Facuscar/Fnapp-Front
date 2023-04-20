@@ -9,6 +9,7 @@ import { validateEmail } from '@fnapp/utils/validateEmail';
 import LogInForm from './EmailForm';
 import * as S from './styles';
 import Toast from '@fnapp/components/Atoms/Toast';
+import RegisterForm from './RegisterForm';
 
 enum LoginStep {
   EMAIL = 'email',
@@ -27,13 +28,14 @@ type SubmitEmailResponse = {
 const LogIn: React.FC = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [step, setStep] = useState<LoginStep>(LoginStep.EMAIL);
+  const [email, setEmail] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 
   const submitEmail = async (e: SyntheticEvent, emailRef: RefObject<HTMLInputElement>) => {
     e.preventDefault();
-    const email = emailRef.current?.value;
+    setEmail(emailRef.current?.value);
 
     if (!email || !validateEmail(email)) {
       setIsEmailValid(false);
@@ -45,7 +47,10 @@ const LogIn: React.FC = () => {
 
     try {
       const { data } = await axios.post<SubmitEmailResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, { email });
-      if (!data.user) setStep(LoginStep.REGISTER);
+      if (!data.user) { 
+        setStep(LoginStep.REGISTER);
+
+      }
       else setStep(LoginStep.PASSWORD);
     } catch (error: any) {
       setError(true);
@@ -85,6 +90,9 @@ const LogIn: React.FC = () => {
               isLoading={isLoading} 
               isEmailValid={isEmailValid} 
             />
+          )}
+          {step === LoginStep.REGISTER && (
+            <RegisterForm />
           )}
         </Sidebar>
       )}
