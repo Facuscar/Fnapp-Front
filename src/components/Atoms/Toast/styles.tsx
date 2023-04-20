@@ -14,7 +14,7 @@ export const ToastWrapper = styled.div<{ isClosing: boolean }>`
   top: ${HEADER_HEIGHT};
   right: 0;
   min-width: ${px2rem(TOAST_MIN_WIDTH)};
-  padding: ${({ theme }) => theme.spacing.s};
+  padding: ${({ theme }) => `${theme.spacing.halfL} ${theme.spacing.s}`};
   padding-top: ${({ theme }) => theme.spacing.xs};
   margin-right: ${({ theme }) => theme.spacing.s};
   z-index: 10;

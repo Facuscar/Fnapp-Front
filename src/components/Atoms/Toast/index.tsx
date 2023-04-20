@@ -7,7 +7,6 @@ type ToastProps = {
 }
 
 const Toast: React.FC<ToastProps> = ({ message, closeToast }) => {
-  //TODO Fix: setTimeout keeps running after toast is closed
   const [isClosing, setIsClosing] = useState<boolean>(false);
 
   const hideToast = () => {
@@ -18,7 +17,11 @@ const Toast: React.FC<ToastProps> = ({ message, closeToast }) => {
   };
 
   useEffect(() => {
-    setTimeout(hideToast, 10000);
+    const toastTimeout = setTimeout(hideToast, 10000);
+
+    return () => {
+      clearTimeout(toastTimeout);
+    };
   }, []);
 
   return (
