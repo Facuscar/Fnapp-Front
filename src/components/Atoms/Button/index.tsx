@@ -9,7 +9,8 @@ export type ButtonProps = {
 } & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
 const Button: React.FC<ButtonProps> = ({ variant = 'primary', ...props}) => {
-  if (variant === 'primary') return <S.PrimaryButton {...props} />
+  const { isLoading } = props;
+  if (variant === 'primary') return <S.PrimaryButton {...props} disabled={!!isLoading}/>
   
   if (variant === 'ghost') return <S.GhostButton {...props} />
 

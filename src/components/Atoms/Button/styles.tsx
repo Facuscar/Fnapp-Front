@@ -63,7 +63,7 @@ const Button: React.FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>
   <button {...props}>{isLoading ? <LoadingAnimation /> : children}</button>
 );
 
-export const PrimaryButton: React.FC = styled(Button)`
+export const PrimaryButton: React.FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & ButtonProps> = styled(Button)`
   background-color: ${({ theme }) => theme.colors.primary.m};
   color: ${({ theme }) => theme.colors.special.white};
   padding: ${({ theme }) => theme.spacing.xs};
