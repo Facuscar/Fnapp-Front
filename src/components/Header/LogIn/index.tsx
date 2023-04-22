@@ -35,19 +35,23 @@ const LogIn: React.FC = () => {
 
   const submitEmail = (e: SyntheticEvent, emailRef: RefObject<HTMLInputElement>) => {
     e.preventDefault();
-    setEmail(emailRef.current?.value);
+    const submittedEmail = emailRef.current?.value;
 
-    if ((email == null) || !validateEmail(email)) {
+    if ((submittedEmail == null) || !validateEmail(submittedEmail)) {
       setIsEmailValid(false);
       return;
     }
 
     setIsLoading(true);
     setIsEmailValid(true);
+    setEmail(submittedEmail);
 
     void (async () => {
       try {
-        const { data } = await axios.post<SubmitEmailResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, { email });
+        const { data } = await axios.post<SubmitEmailResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, {
+          email:
+          submittedEmail
+        });
         if (data.user == null) {
           setStep(LoginStep.REGISTER);
         } else setStep(LoginStep.PASSWORD);
