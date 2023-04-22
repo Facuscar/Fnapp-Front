@@ -1,12 +1,11 @@
-import { HTMLAttributes } from "react";
-import styled from "styled-components";
+import { type HTMLAttributes } from 'react';
+import styled from 'styled-components';
 
-import Button from "@fnapp/components/Atoms/Button";
-import User from "@fnapp/components/Icons/UserIcon";
-import { px2rem } from "@fnapp/utils/px2rem";
+import Button from '@fnapp/components/Atoms/Button';
+import User from '@fnapp/components/Icons/UserIcon';
+import { px2rem } from '@fnapp/utils/px2rem';
 
-
-const USER_HEIGHT= px2rem(25);
+const USER_HEIGHT = px2rem(25);
 
 const StyledButton = styled(Button)`
   display: flex;

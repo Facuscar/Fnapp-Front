@@ -94,8 +94,8 @@ const LogIn: React.FC = () => {
               isEmailValid={isEmailValid}
             />
           )}
-          {step === LoginStep.REGISTER && (
-            <RegisterForm />
+          {step === LoginStep.REGISTER && email !== undefined && (
+            <RegisterForm email={email} />
           )}
         </Sidebar>
       )}

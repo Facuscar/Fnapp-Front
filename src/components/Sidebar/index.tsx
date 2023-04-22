@@ -1,11 +1,11 @@
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import * as S from './styles';
 
-type SidebarProps = {
-  closeSidebar: () => void;
-  children: ReactNode;
-};
+interface SidebarProps {
+  closeSidebar: () => void
+  children: ReactNode
+}
 
 const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
   const [showSidebar, setShowSidebar] = useState<boolean>(true);
@@ -16,7 +16,6 @@ const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
       closeSidebar();
     }, 250);
   }
-  
 
   return (
     <>
@@ -30,7 +29,6 @@ const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
       </S.SidebarWrapper>
     </>
   );
-  
 };
 
 export default Sidebar;

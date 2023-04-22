@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Button from "@fnapp/components/Atoms/Button";
+import Button from '@fnapp/components/Atoms/Button';
 import Logo from '@fnapp/components/Atoms/Logo';
-import { px2rem } from "@fnapp/utils/px2rem";
-import { Breakpoints } from "@fnapp/constants/breakpoints";
+import { px2rem } from '@fnapp/utils/px2rem';
+import { Breakpoints } from '@fnapp/constants/breakpoints';
 
 const SIDEBAR_MAX_WIDTH = 400;
 

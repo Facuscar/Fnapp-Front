@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Heading from "@fnapp/components/Atoms/Heading";
-import Button from "@fnapp/components/Atoms/Button";
-import { px2rem } from "@fnapp/utils/px2rem";
+import Heading from '@fnapp/components/Atoms/Heading';
+import Button from '@fnapp/components/Atoms/Button';
+import { px2rem } from '@fnapp/utils/px2rem';
 
 export const Form = styled.form`
   align-items: center;
@@ -16,7 +16,7 @@ const StyledHeading = styled(Heading)`
   margin-bottom: ${({ theme }) => theme.spacing.s};
 `
 
-export const FormTitle: React.FC<{ children: string }> = ({children}) => (
+export const FormTitle: React.FC<{ children: string }> = ({ children }) => (
   <StyledHeading as="h4">{children}</StyledHeading>
 );
 
