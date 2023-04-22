@@ -1,14 +1,14 @@
 'use client';
 
 import axios from 'axios';
-import { SyntheticEvent, useState, RefObject } from 'react';
+import { type SyntheticEvent, useState, type RefObject } from 'react';
 
+import Toast from '@fnapp/components/Atoms/Toast';
 import Sidebar from '@fnapp/components/Sidebar';
 import { validateEmail } from '@fnapp/utils/validateEmail';
 
 import LogInForm from './EmailForm';
 import * as S from './styles';
-import Toast from '@fnapp/components/Atoms/Toast';
 import RegisterForm from './RegisterForm';
 
 enum LoginStep {
@@ -17,13 +17,13 @@ enum LoginStep {
   PASSWORD = 'password',
 };
 
-type SubmitEmailResponse = {
-  msg: string,
+interface SubmitEmailResponse {
+  msg: string
   user?: {
-    name: string,
-    email: string,
-  },
-};
+    name: string
+    email: string
+  }
+}
 
 const LogIn: React.FC = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -33,11 +33,11 @@ const LogIn: React.FC = () => {
   const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 
-  const submitEmail = async (e: SyntheticEvent, emailRef: RefObject<HTMLInputElement>) => {
+  const submitEmail = (e: SyntheticEvent, emailRef: RefObject<HTMLInputElement>) => {
     e.preventDefault();
     setEmail(emailRef.current?.value);
 
-    if (!email || !validateEmail(email)) {
+    if ((email == null) || !validateEmail(email)) {
       setIsEmailValid(false);
       return;
     }
@@ -45,24 +45,23 @@ const LogIn: React.FC = () => {
     setIsLoading(true);
     setIsEmailValid(true);
 
-    try {
-      const { data } = await axios.post<SubmitEmailResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, { email });
-      if (!data.user) { 
-        setStep(LoginStep.REGISTER);
-
+    void (async () => {
+      try {
+        const { data } = await axios.post<SubmitEmailResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, { email });
+        if (data.user == null) {
+          setStep(LoginStep.REGISTER);
+        } else setStep(LoginStep.PASSWORD);
+      } catch (error: any) {
+        setError(true);
+        if (error.response !== null) {
+          console.log(error.response.data.msg);
+          return;
+        }
+        console.log(error);
+      } finally {
+        setIsLoading(false);
       }
-      else setStep(LoginStep.PASSWORD);
-    } catch (error: any) {
-      setError(true);
-      if (error.response) {
-        console.log(error.response.data.msg);
-        return;
-      }
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-    
+    })();
   }
 
   const openSidebar = () => {
@@ -86,9 +85,9 @@ const LogIn: React.FC = () => {
         <Sidebar closeSidebar={closeSidebar}>
           {step === LoginStep.EMAIL && (
             <LogInForm
-              submitEmail={submitEmail} 
-              isLoading={isLoading} 
-              isEmailValid={isEmailValid} 
+              submitEmail={submitEmail}
+              isLoading={isLoading}
+              isEmailValid={isEmailValid}
             />
           )}
           {step === LoginStep.REGISTER && (
