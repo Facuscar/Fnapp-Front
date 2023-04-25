@@ -1,72 +1,26 @@
 'use client';
 
-import axios from 'axios';
-import { type SyntheticEvent, useState, type RefObject } from 'react';
+import { useState } from 'react';
 
 import Toast from '@fnapp/components/Atoms/Toast';
 import Sidebar from '@fnapp/components/Sidebar';
-import { validateEmail } from '@fnapp/utils/validateEmail';
+import { LogInProvider } from '@fnapp/context/LogInProvider';
 
 import LogInForm from './EmailForm';
 import * as S from './styles';
 import RegisterForm from './RegisterForm';
 
-enum LoginStep {
+export enum LoginStep {
   EMAIL = 'email',
   REGISTER = 'register',
   PASSWORD = 'password',
 };
 
-interface SubmitEmailResponse {
-  msg: string
-  user?: {
-    name: string
-    email: string
-  }
-}
-
 const LogIn: React.FC = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [step, setStep] = useState<LoginStep>(LoginStep.EMAIL);
-  const [email, setEmail] = useState<string>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
-
-  const submitEmail = (e: SyntheticEvent, emailRef: RefObject<HTMLInputElement>) => {
-    e.preventDefault();
-    const submittedEmail = emailRef.current?.value;
-
-    if ((submittedEmail == null) || !validateEmail(submittedEmail)) {
-      setIsEmailValid(false);
-      return;
-    }
-
-    setIsLoading(true);
-    setIsEmailValid(true);
-    setEmail(submittedEmail);
-
-    void (async () => {
-      try {
-        const { data } = await axios.post<SubmitEmailResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}`, {
-          email:
-          submittedEmail
-        });
-        if (data.user == null) {
-          setStep(LoginStep.REGISTER);
-        } else setStep(LoginStep.PASSWORD);
-      } catch (error: any) {
-        setError(true);
-        if (error.response !== null) {
-          console.log(error.response.data.msg);
-          return;
-        }
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const openSidebar = () => {
     setIsFormVisible(true);
@@ -81,26 +35,22 @@ const LogIn: React.FC = () => {
   }
 
   return (
-    <>
+    <LogInProvider>
       <S.LogInButton onClick={openSidebar}>
         Log in
       </S.LogInButton>
       {isFormVisible && (
         <Sidebar closeSidebar={closeSidebar}>
           {step === LoginStep.EMAIL && (
-            <LogInForm
-              submitEmail={submitEmail}
-              isLoading={isLoading}
-              isEmailValid={isEmailValid}
-            />
+            <LogInForm setError={setError} setStep={setStep} setErrorMessage={setErrorMessage} />
           )}
-          {step === LoginStep.REGISTER && email !== undefined && (
-            <RegisterForm email={email} />
+          {step === LoginStep.REGISTER && (
+            <RegisterForm setError={setError} setErrorMessage={setErrorMessage} />
           )}
         </Sidebar>
       )}
-      {error && <Toast message='Oops.. there was an error. Please try again later' closeToast={closeToast} />}
-    </>
+      {error && <Toast message={errorMessage} closeToast={closeToast} />}
+    </LogInProvider>
   );
 };
 

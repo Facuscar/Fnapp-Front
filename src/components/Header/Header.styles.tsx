@@ -1,11 +1,11 @@
 'use client';
 
-import { ReactNode } from "react";
-import Link, { LinkProps } from "next/link";
-import styled from "styled-components";
+import { type ReactNode } from 'react';
+import Link, { type LinkProps } from 'next/link';
+import styled from 'styled-components';
 
-import Heading from "@fnapp/components/Atoms/Heading";
-import { px2rem } from "@fnapp/utils/px2rem";
+import Heading from '@fnapp/components/Atoms/Heading';
+import { px2rem } from '@fnapp/utils/px2rem';
 
 export const HEADER_HEIGHT = px2rem(70);
 
@@ -28,7 +28,7 @@ const StyledHeading = styled(Heading)`
   color: ${({ theme }) => theme.colors.primary.m};
 `
 
-export const Name: React.FC<{ children: string }> = ({children}) => (
+export const Name: React.FC<{ children: string }> = ({ children }) => (
   <StyledHeading as="h1">{children}</StyledHeading>
 );
 
