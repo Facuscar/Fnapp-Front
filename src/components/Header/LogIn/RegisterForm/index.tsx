@@ -10,6 +10,7 @@ interface RegisterFormProps {
 }
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ email }) => {
+  const [nameError, setNameError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [secondPasswordError, setSecondPasswordError] = useState<boolean>(false);
 
@@ -32,7 +33,14 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ email }) => {
   return (
     <S.Form>
       <Input type='email' defaultValue={email} name='Email' disabled />
-      <Input type='text' name='Name' placeholder='Your name' ref={nameRef} />
+      <Input
+        type='text'
+        name='Name'
+        placeholder='Your name'
+        ref={nameRef} hasError={nameError}
+        errorMessage='This field cannot be empty'
+        onChange={e => { setNameError(e.currentTarget.value.length === 0) }}
+      />
       <Input
         type='password'
         name='Password'
@@ -48,7 +56,9 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ email }) => {
         errorMessage='Passwords do not match'
         onChange={e => { comparePasswords(e.currentTarget.value) }}
       />
-      <S.RegisterButton>
+      <S.RegisterButton
+        disabled={nameError || passwordError || secondPasswordError}
+      >
         Register
       </S.RegisterButton>
     </S.Form>

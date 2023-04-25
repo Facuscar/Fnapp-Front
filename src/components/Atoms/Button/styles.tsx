@@ -1,10 +1,10 @@
 'use client';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { px2rem } from "@fnapp/utils/px2rem";
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
-import { ButtonProps } from ".";
+import { px2rem } from '@fnapp/utils/px2rem';
+import { type ButtonHTMLAttributes, type DetailedHTMLProps } from 'react';
+import { type ButtonProps } from '.';
 
 const AnimatedWrapper = styled.div`
   display: inline-block;
@@ -59,8 +59,8 @@ const LoadingAnimation: React.FC = (props) => (
   </AnimatedWrapper>
 );
 
-const Button: React.FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & ButtonProps> = ({isLoading, children, ...props}) => (
-  <button {...props}>{isLoading ? <LoadingAnimation /> : children}</button>
+const Button: React.FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & ButtonProps> = ({ isLoading, children, ...props }) => (
+  <button {...props}>{(isLoading ?? false) ? <LoadingAnimation /> : children}</button>
 );
 
 export const PrimaryButton: React.FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & ButtonProps> = styled(Button)`
@@ -74,12 +74,16 @@ export const PrimaryButton: React.FC<DetailedHTMLProps<ButtonHTMLAttributes<HTML
   text-transform: uppercase;
   font-weight: ${({ theme }) => theme.fontWeight.l};
 
-  &:hover {
+  &:hover, &:disabled {
     background-color: ${({ theme }) => theme.colors.primary.l};
+  }
+
+  &:disabled {
+   cursor:  not-allowed; 
   }
 `;
 
-export const GhostButton: React.FC = styled(Button)`
+export const GhostButton: React.FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & ButtonProps> = styled(Button)`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.primary.m};
   padding: ${({ theme }) => theme.spacing.xs};

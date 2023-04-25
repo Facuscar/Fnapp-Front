@@ -1,18 +1,19 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
+import { type ButtonHTMLAttributes, type DetailedHTMLProps, type ReactNode } from 'react';
 
 import * as S from './styles';
 
 export type ButtonProps = {
-  children?: ReactNode;
-  variant?: 'primary' | 'secondary' | 'ghost';
-  isLoading?: boolean;
+  children?: ReactNode
+  variant?: 'primary' | 'secondary' | 'ghost'
+  isLoading?: boolean
 } & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
-const Button: React.FC<ButtonProps> = ({ variant = 'primary', ...props}) => {
-  const { isLoading } = props;
-  if (variant === 'primary') return <S.PrimaryButton {...props} disabled={!!isLoading}/>
-  
-  if (variant === 'ghost') return <S.GhostButton {...props} />
+const Button: React.FC<ButtonProps> = ({ variant = 'primary', isLoading, disabled, ...props }) => {
+  const isButtonDisabled = isLoading ?? disabled;
+
+  if (variant === 'primary') return <S.PrimaryButton {...props} disabled={(isButtonDisabled)}/>
+
+  if (variant === 'ghost') return <S.GhostButton {...props} disabled={(isButtonDisabled)} />
 
   return <button {...props}></button>
 }
