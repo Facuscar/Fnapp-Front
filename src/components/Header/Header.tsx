@@ -1,12 +1,11 @@
-import Logo from "@fnapp/components/Atoms/Logo";
-import { Routes } from "@fnapp/constants/routes";
+import Logo from '@fnapp/components/Atoms/Logo';
+import { Routes } from '@fnapp/constants/routes';
 
-import LogIn from "./LogIn";
+import LogIn from './LogIn';
 
-import * as S from "./Header.styles";
+import * as S from './Header.styles';
 
 export const Header: React.FC = () => {
-
   return (
     <S.HeaderWrapper>
       <S.LogoWrapper href={Routes.HOME}>

@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import axios from 'axios';
+import { useState, useRef, type SyntheticEvent } from 'react';
 
 import Input from '@fnapp/components/Atoms/Form/Input';
 import { validatePassword } from '@fnapp/utils/validatePassword';
@@ -17,6 +18,10 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ email }) => {
   const nameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
+  const registerUser = async () => {
+    
+  }
+
   const validatePasswordInput = (password: string) => {
     setPasswordError(!validatePassword(password));
   }
@@ -30,8 +35,19 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ email }) => {
     setSecondPasswordError(false);
   };
 
+  const validateForm = () => {
+    return !(nameError || passwordError || secondPasswordError);
+  }
+
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    console.log('Send form');
+  }
+
   return (
-    <S.Form>
+    <S.Form onSubmit={handleSubmit}>
       <Input type='email' defaultValue={email} name='Email' disabled />
       <Input
         type='text'
@@ -57,7 +73,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ email }) => {
         onChange={e => { comparePasswords(e.currentTarget.value) }}
       />
       <S.RegisterButton
-        disabled={nameError || passwordError || secondPasswordError}
+        disabled={!validateForm()}
       >
         Register
       </S.RegisterButton>

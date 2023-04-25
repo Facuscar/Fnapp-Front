@@ -11,7 +11,7 @@ export type ButtonProps = {
 const Button: React.FC<ButtonProps> = ({ variant = 'primary', isLoading, disabled, ...props }) => {
   const isButtonDisabled = isLoading ?? disabled;
 
-  if (variant === 'primary') return <S.PrimaryButton {...props} disabled={(isButtonDisabled)}/>
+  if (variant === 'primary') return <S.PrimaryButton {...props} disabled={(isButtonDisabled)} isLoading={isLoading}/>
 
   if (variant === 'ghost') return <S.GhostButton {...props} disabled={(isButtonDisabled)} />
 
