@@ -6,14 +6,16 @@ import Toast from '@fnapp/components/Atoms/Toast';
 import Sidebar from '@fnapp/components/Sidebar';
 import { LogInProvider } from '@fnapp/context/LogInProvider';
 
-import LogInForm from './EmailForm';
-import * as S from './styles';
+import EmailForm from './EmailForm';
 import RegisterForm from './RegisterForm';
+import LogInForm from './LogInForm';
+import * as S from './styles';
 
 export enum LoginStep {
   EMAIL = 'email',
   REGISTER = 'register',
   PASSWORD = 'password',
+  CONFIRM = 'confirm',
 };
 
 const LogIn: React.FC = () => {
@@ -42,10 +44,13 @@ const LogIn: React.FC = () => {
       {isFormVisible && (
         <Sidebar closeSidebar={closeSidebar}>
           {step === LoginStep.EMAIL && (
-            <LogInForm setError={setError} setStep={setStep} setErrorMessage={setErrorMessage} />
+            <EmailForm setError={setError} setStep={setStep} setErrorMessage={setErrorMessage} />
           )}
           {step === LoginStep.REGISTER && (
             <RegisterForm setError={setError} setErrorMessage={setErrorMessage} />
+          )}
+          {step === LoginStep.PASSWORD && (
+            <LogInForm />
           )}
         </Sidebar>
       )}

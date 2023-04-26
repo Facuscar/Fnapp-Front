@@ -17,16 +17,16 @@ interface SubmitEmailResponse {
   }
 };
 
-interface LogInFormProps {
+interface EmailFormProps {
   setStep: (step: LoginStep) => void
   setError: (error: boolean) => void
   setErrorMessage: (message: string) => void
 };
 
-const LogInForm: React.FC<LogInFormProps> = ({ setStep, setError, setErrorMessage }) => {
+const EmailForm: React.FC<EmailFormProps> = ({ setStep, setError, setErrorMessage }) => {
   const emailRef = useRef<HTMLInputElement>(null);
 
-  const { setEmail } = useLogIn();
+  const { setEmail, setName } = useLogIn();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
@@ -52,7 +52,10 @@ const LogInForm: React.FC<LogInFormProps> = ({ setStep, setError, setErrorMessag
         });
         if (data.user == null) {
           setStep(LoginStep.REGISTER);
-        } else setStep(LoginStep.PASSWORD);
+        } else {
+          setStep(LoginStep.PASSWORD);
+          setName(data.user.name);
+        }
       } catch (error: any) {
         setError(true);
         if (error.response !== null) {
@@ -87,4 +90,4 @@ const LogInForm: React.FC<LogInFormProps> = ({ setStep, setError, setErrorMessag
   );
 };
 
-export default LogInForm;
+export default EmailForm;
