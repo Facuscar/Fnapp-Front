@@ -41,6 +41,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setError, setErrorMessage }
     if ((password === null) || (name === null)) return;
 
     void (async () => {
+      setIsLoading(true);
       try {
         const { data } = await axios.post<RegisterUserResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}/register`, {
           email,
@@ -54,7 +55,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setError, setErrorMessage }
         console.log(data);
       } catch (error: any) {
         setError(true);
-        if (error.response !== null) {
+        if (error.response !== undefined) {
           setErrorMessage(error.response.data.msg);
           return;
         }

@@ -17,7 +17,7 @@ const LogInForm: React.FC = () => {
   return (
     <S.Form>
       <S.FormTitle>
-        {`Hi! ${name}. Please enter your password`}
+        {`Hi ${name}! Please enter your password`}
       </S.FormTitle>
       <Input type='email' defaultValue={email} name='Email' disabled />
       <Input
