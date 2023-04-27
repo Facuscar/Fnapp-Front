@@ -29,7 +29,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setError, setErrorMessage, 
   const passwordRef = useRef<HTMLInputElement>(null);
   const secondPasswordRef = useRef<HTMLInputElement>(null);
 
-  const { email } = useLogIn();
+  const { email, setName } = useLogIn();
 
   const defaultError = () => {
     setError(true);
@@ -40,7 +40,9 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setError, setErrorMessage, 
     const password = passwordRef.current?.value;
     const name = nameRef.current?.value;
 
-    if ((password === null) || (name === null)) return;
+    if ((password === undefined) || (name === undefined)) return;
+
+    setName(name);
 
     void (async () => {
       setIsLoading(true);

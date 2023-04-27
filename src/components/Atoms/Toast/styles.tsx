@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { HEADER_HEIGHT } from "@fnapp/components/Header/Header.styles";
+import { HEADER_HEIGHT } from '@fnapp/components/Header/Header.styles';
 import Alert from '@fnapp/components/Icons/AlertIcon';
-import { px2rem } from "@fnapp/utils/px2rem";
-import Button from "@fnapp/components/Atoms/Button";
-import { darken } from "polished";
+import { px2rem } from '@fnapp/utils/px2rem';
+import Button from '@fnapp/components/Atoms/Button';
+import { darken } from 'polished';
 
 const TOAST_WIDTH = 450;
 const ICON_SIZE = 40;
