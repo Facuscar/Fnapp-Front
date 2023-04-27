@@ -6,10 +6,12 @@ import { useLogIn } from '@fnapp/context/LogInProvider';
 import { validatePassword } from '@fnapp/utils/validatePassword';
 
 import * as S from './styles';
+import { LoginStep } from '..';
 
 interface RegisterFormProps {
   setError: (error: boolean) => void
   setErrorMessage: (message: string) => void
+  setStep: (step: LoginStep) => void
 };
 
 interface RegisterUserResponse {
@@ -17,7 +19,7 @@ interface RegisterUserResponse {
   success?: boolean
 };
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ setError, setErrorMessage }) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ setError, setErrorMessage, setStep }) => {
   const [nameError, setNameError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [secondPasswordError, setSecondPasswordError] = useState<boolean>(false);
@@ -52,7 +54,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setError, setErrorMessage }
           defaultError();
         }
 
-        console.log(data);
+        setStep(LoginStep.CONFIRM);
       } catch (error: any) {
         setError(true);
         if (error.response !== undefined) {

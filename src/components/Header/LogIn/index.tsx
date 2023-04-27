@@ -6,6 +6,7 @@ import Toast from '@fnapp/components/Atoms/Toast';
 import Sidebar from '@fnapp/components/Sidebar';
 import { LogInProvider } from '@fnapp/context/LogInProvider';
 
+import ConfirmAccount from './ConfirmAccount';
 import EmailForm from './EmailForm';
 import RegisterForm from './RegisterForm';
 import LogInForm from './LogInForm';
@@ -47,7 +48,10 @@ const LogIn: React.FC = () => {
             <EmailForm setError={setError} setStep={setStep} setErrorMessage={setErrorMessage} />
           )}
           {step === LoginStep.REGISTER && (
-            <RegisterForm setError={setError} setErrorMessage={setErrorMessage} />
+            <RegisterForm setError={setError} setErrorMessage={setErrorMessage} setStep={setStep} />
+          )}
+          {step === LoginStep.CONFIRM && (
+            <ConfirmAccount />
           )}
           {step === LoginStep.PASSWORD && (
             <LogInForm />

@@ -1,5 +1,7 @@
+import { type ReactNode } from 'react';
+
 interface HeadingProps {
-  children: string
+  children: string | ReactNode
   as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
