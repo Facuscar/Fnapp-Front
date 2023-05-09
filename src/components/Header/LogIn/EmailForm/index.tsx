@@ -58,7 +58,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ setStep, setError, setErrorMessag
         }
       } catch (error: any) {
         setError(true);
-        if (error.response !== null) {
+        if (error.response !== undefined) {
           setErrorMessage(error.response.data.msg);
           return;
         }
