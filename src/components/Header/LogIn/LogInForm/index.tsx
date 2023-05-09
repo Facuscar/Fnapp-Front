@@ -9,7 +9,7 @@ import * as S from './styles';
 const LogInForm: React.FC = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const [canSubmit, setCanSubmit] = useState<boolean>(false);
-  const { name, email } = useLogIn();
+  const { name, email, setError, setErrorMessage } = useLogIn();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,7 +21,8 @@ const LogInForm: React.FC = () => {
         const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_USERS_URL}/login`, { email, password });
       } catch (error: any) {
         if (error.response !== undefined) {
-          
+          setError(true);
+          setErrorMessage(error.response.data.msg)
         }
       }
     })();

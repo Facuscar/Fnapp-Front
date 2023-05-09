@@ -2,10 +2,9 @@ import axios from 'axios';
 import { type RefObject, type SyntheticEvent, useRef, useState } from 'react';
 
 import Input from '@fnapp/components/Atoms/Form/Input';
+import { LoginStep } from '@fnapp/components/Header/LogIn/component';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 import { validateEmail } from '@fnapp/utils/validateEmail';
-
-import { LoginStep } from '..';
 
 import * as S from './styles';
 

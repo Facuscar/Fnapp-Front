@@ -2,11 +2,11 @@ import axios from 'axios';
 import { useState, useRef, type SyntheticEvent } from 'react';
 
 import Input from '@fnapp/components/Atoms/Form/Input';
+import { LoginStep } from '@fnapp/components/Header/LogIn/component';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 import { validatePassword } from '@fnapp/utils/validatePassword';
 
 import * as S from './styles';
-import { LoginStep } from '..';
 
 interface RegisterFormProps {
   setStep: (step: LoginStep) => void
