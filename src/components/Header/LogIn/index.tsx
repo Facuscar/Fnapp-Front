@@ -22,8 +22,6 @@ export enum LoginStep {
 const LogIn: React.FC = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [step, setStep] = useState<LoginStep>(LoginStep.EMAIL);
-  const [error, setError] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const openSidebar = () => {
     setIsFormVisible(true);
@@ -31,10 +29,6 @@ const LogIn: React.FC = () => {
 
   const closeSidebar = () => {
     setIsFormVisible(false);
-  }
-
-  const closeToast = () => {
-    setError(false);
   }
 
   return (
@@ -45,10 +39,10 @@ const LogIn: React.FC = () => {
       {isFormVisible && (
         <Sidebar closeSidebar={closeSidebar}>
           {step === LoginStep.EMAIL && (
-            <EmailForm setError={setError} setStep={setStep} setErrorMessage={setErrorMessage} />
+            <EmailForm setStep={setStep} />
           )}
           {step === LoginStep.REGISTER && (
-            <RegisterForm setError={setError} setErrorMessage={setErrorMessage} setStep={setStep} />
+            <RegisterForm setStep={setStep} />
           )}
           {step === LoginStep.CONFIRM && (
             <ConfirmAccount />
@@ -58,7 +52,7 @@ const LogIn: React.FC = () => {
           )}
         </Sidebar>
       )}
-      {error && <Toast message={errorMessage} closeToast={closeToast} />}
+      <Toast />
     </LogInProvider>
   );
 };

@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
+
+import { useLogIn } from '@fnapp/context/LogInProvider';
+
 import * as S from './styles';
 
-type ToastProps = {
-  message: string;
-  closeToast: () => void;
-}
-
-const Toast: React.FC<ToastProps> = ({ message, closeToast }) => {
+const Toast: React.FC = () => {
   const [isClosing, setIsClosing] = useState<boolean>(false);
+
+  const { setError, errorMessage } = useLogIn();
 
   const hideToast = () => {
     setIsClosing(true);
     setTimeout(() => {
-      closeToast();
+      setError(false);
     }, 350);
   };
 
@@ -31,7 +31,7 @@ const Toast: React.FC<ToastProps> = ({ message, closeToast }) => {
       </S.CloseButton>
       <S.ToastText>
         <S.ToastAlert />
-        {message}
+        {errorMessage}
       </S.ToastText>
       <S.TimeBar isClosing={isClosing} />
     </S.ToastWrapper>

@@ -19,14 +19,12 @@ interface SubmitEmailResponse {
 
 interface EmailFormProps {
   setStep: (step: LoginStep) => void
-  setError: (error: boolean) => void
-  setErrorMessage: (message: string) => void
 };
 
-const EmailForm: React.FC<EmailFormProps> = ({ setStep, setError, setErrorMessage }) => {
+const EmailForm: React.FC<EmailFormProps> = ({ setStep }) => {
   const emailRef = useRef<HTMLInputElement>(null);
 
-  const { setEmail, setName } = useLogIn();
+  const { setEmail, setName, setError, setErrorMessage } = useLogIn();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
