@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import { Header } from '@fnapp/components/Header/Header';
 
 interface PageProps {

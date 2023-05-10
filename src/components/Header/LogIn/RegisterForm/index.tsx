@@ -60,8 +60,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setStep }) => {
         if (error.response !== undefined) {
           setErrorMessage(error.response.data.msg);
           return;
-        }
-        console.log(error);
+        };
         defaultError();
       } finally {
         setIsLoading(false);
