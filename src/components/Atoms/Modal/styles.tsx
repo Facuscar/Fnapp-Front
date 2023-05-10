@@ -1,9 +1,9 @@
 'use client';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Button from "@fnapp/components/Atoms/Button";
-import { px2rem } from "@fnapp/utils/px2rem";
+import Button from '@fnapp/components/Atoms/Button';
+import { px2rem } from '@fnapp/utils/px2rem';
 
 const MODAL_MAX_WIDTH = 450;
 
