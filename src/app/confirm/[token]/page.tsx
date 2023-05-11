@@ -6,13 +6,44 @@ interface PageProps {
   params: { token: string }
 }
 
-const Page: React.FC<PageProps> = ({ params }) => {
+interface ConfirmationResponse {
+  msg: string
+};
+
+/* @ts-expect-error Async Server Component */
+const Page: React.FC<PageProps> = async ({ params }) => {
   const { token } = params;
+
+  const getConfirmation = async () => {
+    try {
+      const { data } = await axios.get<ConfirmationResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}/confirm/${token}`);
+      return {
+        msg: data.msg,
+        error: false
+      };
+    } catch (error: any) {
+      if (error.response !== undefined) {
+        return {
+          msg: error.response.data.msg as string,
+          error: true
+        }
+      }
+
+      return {
+        msg: 'Oops.. there was an error..',
+        error: true
+      }
+    }
+  }
+
+  const data = await getConfirmation();
+  console.log(data);
+  const { error, msg } = data;
 
   return (
     <>
       <Header />
-      Confirmation page {token}
+      {error ? `there was an error ${msg}` : msg }
     </>
   );
 }
