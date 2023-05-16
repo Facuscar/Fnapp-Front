@@ -43,7 +43,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
   return (
     <>
       <Header />
-      {error && <Alert msg={msg} /> }
+      <Alert msg={msg} error={error} />
     </>
   );
 }
