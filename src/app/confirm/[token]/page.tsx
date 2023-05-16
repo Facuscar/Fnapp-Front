@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import Alert from '@fnapp/components/Atoms/Alert';
 import { Header } from '@fnapp/components/Header/Header';
 
 interface PageProps {
@@ -37,13 +38,12 @@ const Page: React.FC<PageProps> = async ({ params }) => {
   }
 
   const data = await getConfirmation();
-  console.log(data);
   const { error, msg } = data;
 
   return (
     <>
       <Header />
-      {error ? `there was an error ${msg}` : msg }
+      {error && <Alert msg={msg} /> }
     </>
   );
 }
