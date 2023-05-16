@@ -1,3 +1,13 @@
 .alert_wrapper {
   background-color: var(--special-red);
+  padding: var(--spacing-xs);
+  max-width: 75rem;
+  margin: var(--spacing-m) auto;
+  border-left: 5px solid var(--special-red-l);
+}
+
+.alert_wrapper p {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
 }

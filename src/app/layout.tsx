@@ -1,5 +1,7 @@
-import StyledComponentsRegistry from './registry';
 import { Theme, GlobalStyles } from '@fnapp/theme';
+
+import StyledComponentsRegistry from './registry';
+import './globals.css'
 
 export const metadata = {
   title: 'Create Next App',
