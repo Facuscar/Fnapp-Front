@@ -4,41 +4,69 @@
 .animated_wrapper {
   display: inline-block;
   position: relative;
-  width: calc(50% - ${px2rem(100)});
-  height: ${px2rem(14)};
+  width: calc(50% - px2rem(100));
+  height: px2rem(14);
 
   & div {
     display: inline-block;
     position: absolute;
-    left: ${px2rem(8)};
-    width: ${px2rem(16)};
+    left: px2rem(8);
+    width: px2rem(16);
     background: #fff;
     animation: loading-animation 600ms cubic-bezier(0, 0.5, 0.5, 1) infinite;
   }
 
   & div:nth-child(1) {
-  left: ${px2rem(8)};
+  left: px2rem(8);
   animation-delay: -0.24s;
   }
 
   & div:nth-child(2) {
-  left: ${px2rem(32)};
+  left: px2rem(32);
   animation-delay: -0.12s;
 }
 
   & div:nth-child(3) {
-    left: ${px2rem(56)};
+    left: px2rem(56);
     animation-delay: 0;
   }
 
   @keyframes loading-animation {
     0% {
-      top: ${px2rem(0)};
-      height: ${px2rem(14)};
+      top: px2rem(0);
+      height: px2rem(14);
     }
     50%, 100% {
-      top: ${px2rem(7)};
-      height: ${px2rem(7)};
+      top: px2rem(7);
+      height: px2rem(7);
     }
   }
+}
+
+.primary_button {
+  background-color: $primary-m;
+  color: $special-white;
+  padding: $spacing-xs;
+  border-radius: px2rem(3);
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms;
+  text-transform: uppercase;
+  font-weight: $fontWeight-l;
+
+  &:hover, &:disabled {
+    background-color: $primary-l;
+  }
+
+  &:disabled {
+   cursor:  not-allowed; 
+  }
+}
+
+.ghost_button {
+  background-color: transparent;
+  color: $primary-m;
+  padding: $spacing-xs;
+  border: 2px solid $primary-m;
+  cursor: pointer;
 }
