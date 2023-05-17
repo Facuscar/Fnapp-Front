@@ -1,7 +1,9 @@
+@use '/src/app/variables' as *;
+
 .alert_wrapper, .alert_wrapper_error {
-  padding: var(--spacing-xs);
+  padding: $spacing-xs;
   max-width: 75rem;
-  margin: var(--spacing-m) auto;
+  margin: $spacing-m auto;
   border-radius: 5px;
 
   & p {
@@ -12,11 +14,11 @@
 }
 
 .alert_wrapper {
-  background-color: var(--primary-m);
-  border-left: 5px solid var(--primary-l);
+  background-color: $primary-m;
+  border-left: 5px solid $primary-l;
 }
 
 .alert_wrapper_error {
-  background-color: var(--special-red);
-  border-left: 5px solid var(--special-red-l);
+  background-color: $special-red;
+  border-left: 5px solid $special-red-l;
 }
