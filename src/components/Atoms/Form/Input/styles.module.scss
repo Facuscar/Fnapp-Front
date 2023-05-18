@@ -1,0 +1,43 @@
+@use '/src/app/variables' as *;
+
+.input_wrapper {
+  margin-top: $spacing-s;
+  width: 100%;
+}
+
+.input_label {
+  text-transform: uppercase;
+}
+
+.form_input {
+  width: 100%;
+  margin-top: $spacing-xs;
+  margin-bottom: $spacing-l;
+  padding: $spacing-xs;
+  border: none;
+  border-radius: px2rem(3);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: 2px solid transparent;
+
+  &::placeholder {
+    color: $gray-l;
+  }
+
+  &:focus {
+    background-color: lighten($gray-xs, 25%);
+    outline: none;
+  }
+
+  &.error {
+    margin-bottom: $spacing-s;
+    border-bottom: 2px solid $special-red;
+  }
+}
+
+.error_message {
+  color: lighten($special-red, 0.1);
+  height: $spacing-m;
+  padding-bottom: $spacing-xs;
+  font-size: px2rem(14);
+}

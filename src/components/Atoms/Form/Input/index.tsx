@@ -1,6 +1,6 @@
 import React, { type HTMLAttributes } from 'react';
 
-import * as S from './styles';
+import { InputWrapper, InputLabel, FormInput, ErrorMessage } from './components';
 
 export type InputProps = HTMLAttributes<HTMLInputElement> & {
   name: string
@@ -13,11 +13,11 @@ export type InputProps = HTMLAttributes<HTMLInputElement> & {
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({ name, id, type, hasError, errorMessage, ...props }, ref) => {
   return (
-    <S.InputWrapper>
-      <S.InputLabel htmlFor={id ?? type}>{name}</S.InputLabel>
-      <S.Input ref={ref} id={id} type={type} hasError={hasError} {...props}/>
-      { (hasError ?? false) && <S.ErrorMessage>{errorMessage ?? 'There is an error'}</S.ErrorMessage> }
-    </S.InputWrapper>
+    <InputWrapper>
+      <InputLabel htmlFor={id ?? type}>{name}</InputLabel>
+      <FormInput name={name} ref={ref} id={id} type={type} hasError={hasError} {...props}/>
+      { (hasError ?? false) && <ErrorMessage>{errorMessage ?? 'There is an error'}</ErrorMessage> }
+    </InputWrapper>
 
   );
 });
