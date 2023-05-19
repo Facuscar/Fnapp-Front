@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
+import { type ReactNode } from 'react';
 
-import * as S from './styles';
+import * as S from './component';
 
-type ModalProps = {
-  children: ReactNode;
-  isVisible: boolean;
-  closeModal: () => void;
+interface ModalProps {
+  children: ReactNode
+  isVisible: boolean
+  closeModal: () => void
 }
 
 const Modal: React.FC<ModalProps> = ({ children, isVisible, closeModal }) => {
