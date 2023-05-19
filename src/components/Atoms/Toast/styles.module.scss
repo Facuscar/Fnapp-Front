@@ -5,11 +5,28 @@
  border-radius: $spacing-xs;
  position: absolute;
  top: px2rem(70);
+ right: 0;
  width: px2rem(450);
  padding: $spacing-xs $spacing-s $spacing-halfL;
  margin-right: $spacing-s;
  z-index: 10;
  overflow: hidden;
+
+ animation: showToast 400ms cubic-bezier(0.42, 0, 0.58, 1);
+
+  @keyframes showToast {
+    0% {
+      transform: translateX(px2rem(450));
+    }
+
+    50% {
+      transform: translateX(px2rem(-32));
+    }
+
+    100% {
+      transform: translateX(px2rem(0));
+    }
+  }
 
  &.hide_toast {
   animation: hideToast 400ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -25,24 +42,6 @@
 
     100% {
       transform: translateX(px2rem(500));
-    }
-  }
- }
-
- &.show_toast {
-  animation: showToast 400ms cubic-bezier(0.42, 0, 0.58, 1);
-
-  @keyframes showToast {
-    0% {
-      transform: translateX(450);
-    }
-
-    50% {
-      transform: translateX(px2rem(-32));
-    }
-
-    100% {
-      transform: translateX(px2rem(0));
     }
   }
  }

@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import { ModalLayout, CloseModalButton, ModalWrapper } from './component';
+import { ModalLayout, CloseModalButton, ModalWrapper } from './components';
 
 interface ModalProps {
   children: ReactNode
