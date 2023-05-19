@@ -1,4 +1,4 @@
-import React, { type DetailedHTMLProps, type HTMLAttributes } from 'react';
+import { type DetailedHTMLProps, type HTMLAttributes } from 'react';
 import Button, { type ButtonProps } from '@fnapp/components/Atoms/Button';
 
 import styles from './styles.module.scss';

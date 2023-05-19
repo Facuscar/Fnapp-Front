@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useLogIn } from '@fnapp/context/LogInProvider';
 
-import * as S from './styles';
+import { ToastWrapper, CloseButton, ToastText, ToastAlert, TimeBar } from './components';
 
 const Toast: React.FC = () => {
   const [isClosing, setIsClosing] = useState<boolean>(false);
@@ -25,16 +25,16 @@ const Toast: React.FC = () => {
   }, []);
 
   return (
-    <S.ToastWrapper isClosing={isClosing} onClick={hideToast}>
-      <S.CloseButton>
+    <ToastWrapper isClosing={isClosing} onClick={hideToast}>
+      <CloseButton>
         x
-      </S.CloseButton>
-      <S.ToastText>
-        <S.ToastAlert />
+      </CloseButton>
+      <ToastText>
+        <ToastAlert />
         {errorMessage}
-      </S.ToastText>
-      <S.TimeBar isClosing={isClosing} />
-    </S.ToastWrapper>
+      </ToastText>
+      <TimeBar isClosing={isClosing} />
+    </ToastWrapper>
   );
 };
 

@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 
-import * as S from './component';
+import { ModalLayout, CloseModalButton, ModalWrapper } from './component';
 
 interface ModalProps {
   children: ReactNode
@@ -13,13 +13,13 @@ const Modal: React.FC<ModalProps> = ({ children, isVisible, closeModal }) => {
 
   return (
     <>
-      <S.ModalLayout onClick={closeModal} />
-      <S.CloseModalButton onClick={closeModal} variant="ghost">
+      <ModalLayout onClick={closeModal} />
+      <CloseModalButton onClick={closeModal} variant="ghost">
         X
-      </S.CloseModalButton>
-      <S.ModalWrapper>
+      </CloseModalButton>
+      <ModalWrapper>
         {children}
-      </S.ModalWrapper>
+      </ModalWrapper>
     </>
   );
 };

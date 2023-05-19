@@ -1,0 +1,93 @@
+@use '/src/app/variables' as *;
+
+.toast_wrapper {
+ background-color: $special-red;
+ border-radius: $spacing-xs;
+ position: absolute;
+ top: px2rem(70);
+ width: px2rem(450);
+ padding: $spacing-xs $spacing-s $spacing-halfL;
+ margin-right: $spacing-s;
+ z-index: 10;
+ overflow: hidden;
+
+ &.hide_toast {
+  animation: hideToast 400ms cubic-bezier(0.42, 0, 0.58, 1);
+
+  @keyframes hideToast {
+    0% {
+      transform: translateX(0);
+    }
+
+    25% {
+      transform: translateX(px2rem(-32));
+    }
+
+    100% {
+      transform: translateX(px2rem(500));
+    }
+  }
+ }
+
+ &.show_toast {
+  animation: showToast 400ms cubic-bezier(0.42, 0, 0.58, 1);
+
+  @keyframes showToast {
+    0% {
+      transform: translateX(450);
+    }
+
+    50% {
+      transform: translateX(px2rem(-32));
+    }
+
+    100% {
+      transform: translateX(px2rem(0));
+    }
+  }
+ }
+}
+
+.close_button {
+  margin: 0 0 0 auto;
+  background-color: transparent;
+  display: block;
+  padding: 0;
+}
+
+.toast_text {
+  text-align: left;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.toast_alert {
+  width: px2rem(40);
+  height: px2rem(40);
+}
+
+.time_bar {
+  animation: timeBar 10000ms;
+  background-color: darken($special-red, 25%);
+  bottom: 0;
+  height: px2rem(5);
+  position: absolute;
+  right: 0;
+  width: 100%;
+
+  @keyframes timeBar {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(px2rem(450));
+    }
+  }
+
+  .is_closing {
+    display: none;
+  }
+}
