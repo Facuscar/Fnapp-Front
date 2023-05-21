@@ -1,10 +1,7 @@
 'use client';
 
 import React, { type ReactNode } from 'react';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { Roboto_Condensed } from 'next/font/google';
-
-const RobotoCondensed = Roboto_Condensed({ subsets: ['latin'], weight: ['300', '400', '700'] });
+import { ThemeProvider } from 'styled-components';
 
 const theme = {
   colors: {
@@ -62,17 +59,3 @@ export const Theme: React.FC<{ children: ReactNode }> = ({ children }) => {
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
   );
 };
-
-export const GlobalStyles = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-
-  body {
-    font-family: ${RobotoCondensed.style.fontFamily};
-    color: ${({ theme }) => theme.colors.special.white};
-    background-color: ${({ theme }) => theme.colors.gray.l};
-  }
-`;
