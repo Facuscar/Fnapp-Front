@@ -1,13 +1,13 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
-interface HeadingProps {
+type HeadingProps = {
   children: string | ReactNode
   as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-}
+} & DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
 
-const Heading: React.FC<HeadingProps> = ({ as, children }) => {
+const Heading: React.FC<HeadingProps> = ({ as, children, ...props }) => {
   const Component = as;
-  return <Component>{children}</Component>
+  return <Component {...props}>{children}</Component>
 };
 
 export default Heading;

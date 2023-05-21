@@ -3,7 +3,7 @@ import { Routes } from '@fnapp/constants/routes';
 
 import LogIn from './LogIn';
 
-import * as S from './Header.styles';
+import * as S from './components';
 
 export const Header: React.FC = () => {
   return (

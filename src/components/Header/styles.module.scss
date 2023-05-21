@@ -1,0 +1,22 @@
+@use '/src/app/variables' as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: $special-black;
+  justify-content: space-between;
+  padding: $spacing-m;
+  height: px2rem(70);
+}
+
+.heading {
+  color: $primary-m;
+}
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  gap: $spacing-s;
+  padding: $spacing-s;
+  text-decoration: none;
+}
