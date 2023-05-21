@@ -3,16 +3,16 @@ import { Routes } from '@fnapp/constants/routes';
 
 import LogIn from './LogIn';
 
-import * as S from './components';
+import { HeaderWrapper, LogoWrapper, Name } from './components';
 
 export const Header: React.FC = () => {
   return (
-    <S.HeaderWrapper>
-      <S.LogoWrapper href={Routes.HOME}>
+    <HeaderWrapper>
+      <LogoWrapper href={Routes.HOME}>
         <Logo />
-        <S.Name>Fnapp</S.Name>
-      </S.LogoWrapper>
+        <Name>Fnapp</Name>
+      </LogoWrapper>
       <LogIn />
-    </S.HeaderWrapper>
+    </HeaderWrapper>
   );
 }

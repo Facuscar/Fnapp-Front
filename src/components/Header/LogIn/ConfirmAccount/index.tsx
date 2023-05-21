@@ -1,16 +1,16 @@
 import { useLogIn } from '@fnapp/context/LogInProvider';
 
-import * as S from './styles';
+import { ConfirmAccountWrapper, ConfirmTitle, ConfirmAccountIcon, ConfirmSubtitle } from './components';
 
 const ConfirmAccount: React.FC = () => {
   const { email, name } = useLogIn();
 
   return (
-    <S.ConfirmAccountWrapper>
-      <S.ConfirmTitle>Welcome {name}! Thank you for joining Fnapp</S.ConfirmTitle>
-      <S.ConfirmAccountIcon />
-      <S.ConfirmSubtitle>We&apos;ve sent a confirmation email to {email}, follow the instruction to confirm your account</S.ConfirmSubtitle>
-    </S.ConfirmAccountWrapper>
+    <ConfirmAccountWrapper>
+      <ConfirmTitle>Welcome {name}! Thank you for joining Fnapp</ConfirmTitle>
+      <ConfirmAccountIcon />
+      <ConfirmSubtitle>We&apos;ve sent a confirmation email to {email}, follow the instruction to confirm your account</ConfirmSubtitle>
+    </ConfirmAccountWrapper>
   );
 };
 

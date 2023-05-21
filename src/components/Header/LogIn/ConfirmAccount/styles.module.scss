@@ -1,0 +1,20 @@
+@use '/src/app/variables' as *;
+
+.heading {
+  text-align: center;
+  margin-bottom: $spacing-m;
+}
+
+.email_icon {
+  height: px2rem(60);
+  width: px2rem(60);
+  margin-bottom: $spacing-m;
+}
+
+.wrapper {
+  margin-top: $spacing-m;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
