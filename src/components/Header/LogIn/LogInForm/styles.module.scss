@@ -1,0 +1,17 @@
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.heading {
+  margin-top: $spacing-s;
+  margin-bottom: $spacing-s;
+}
+
+.login_button {
+  margin-top: $spacing-s;
+  font-style: px2rem(14);
+  width: 100%;
+}

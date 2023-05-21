@@ -4,7 +4,7 @@ import { useState, useRef, type FormEvent } from 'react';
 import Input from '@fnapp/components/Atoms/Form/Input';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 
-import * as S from './styles';
+import { FormTitle, Form, LogInButton } from './components';
 
 const LogInForm: React.FC = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -33,10 +33,10 @@ const LogInForm: React.FC = () => {
   }
 
   return (
-    <S.Form onSubmit={handleSubmit}>
-      <S.FormTitle>
+    <Form onSubmit={handleSubmit}>
+      <FormTitle>
         {`Hi ${name}! Please enter your password`}
-      </S.FormTitle>
+      </FormTitle>
       <Input type='email' defaultValue={email} name='Email' disabled />
       <Input
         type='password'
@@ -44,10 +44,10 @@ const LogInForm: React.FC = () => {
         onChange={validatePasswordInput}
         ref={passwordRef}
       />
-      <S.LogInButton disabled={!canSubmit}>
+      <LogInButton disabled={!canSubmit}>
         Log in
-      </S.LogInButton>
-    </S.Form>
+      </LogInButton>
+    </Form>
   )
 }
 
