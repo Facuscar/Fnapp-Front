@@ -6,7 +6,7 @@ import { LoginStep } from '@fnapp/components/Header/LogIn/component';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 import { validateEmail } from '@fnapp/utils/validateEmail';
 
-import * as S from './styles';
+import * as S from './components';
 
 interface SubmitEmailResponse {
   msg: string
