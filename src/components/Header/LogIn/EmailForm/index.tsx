@@ -6,7 +6,7 @@ import { LoginStep } from '@fnapp/components/Header/LogIn/component';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 import { validateEmail } from '@fnapp/utils/validateEmail';
 
-import * as S from './components';
+import { LogInButton, Form, FormTitle } from './components';
 
 interface SubmitEmailResponse {
   msg: string
@@ -68,10 +68,10 @@ const EmailForm: React.FC<EmailFormProps> = ({ setStep }) => {
   }
 
   return (
-    <S.Form onSubmit={(e) => { submitEmail(e, emailRef) }}>
-      <S.FormTitle>
+    <Form onSubmit={(e) => { submitEmail(e, emailRef) }}>
+      <FormTitle>
         Please enter your email address
-      </S.FormTitle>
+      </FormTitle>
       <Input
         type='email'
         name='Email'
@@ -80,10 +80,10 @@ const EmailForm: React.FC<EmailFormProps> = ({ setStep }) => {
         hasError={!isEmailValid}
         errorMessage='Email is not valid'
       />
-      <S.LogInButton isLoading={isLoading} type='submit'>
+      <LogInButton isLoading={isLoading} type='submit'>
         Continue
-      </S.LogInButton>
-    </S.Form>
+      </LogInButton>
+    </Form>
   );
 };
 

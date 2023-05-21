@@ -1,27 +1,18 @@
-import styled from 'styled-components';
+import { type DetailedHTMLProps, type FormHTMLAttributes } from 'react';
 
 import Heading from '@fnapp/components/Atoms/Heading';
-import Button from '@fnapp/components/Atoms/Button';
-import { px2rem } from '@fnapp/utils/px2rem';
+import Button, { type ButtonProps } from '@fnapp/components/Atoms/Button';
 
-export const Form = styled.form`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
+import styles from './styles.module.scss';
 
-const StyledHeading = styled(Heading)`
-  margin-top: ${({ theme }) => theme.spacing.s};
-  margin-bottom: ${({ theme }) => theme.spacing.s};
-`
-
-export const FormTitle: React.FC<{ children: string }> = ({ children }) => (
-  <StyledHeading as="h4">{children}</StyledHeading>
+export const Form: React.FC<DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>> = (props) => (
+ <form className={styles.form} />
 );
 
-export const LogInButton = styled(Button)`
-  margin-top: ${({ theme }) => theme.spacing.s};
-  font-size: ${px2rem(14)};
-  width: 100%;
-`;
+export const FormTitle: React.FC<{ children: string }> = ({ children }) => (
+  <Heading as="h4" className={styles.heading}>{children}</Heading>
+);
+
+export const LogInButton: React.FC<ButtonProps> = (props) => (
+  <Button className={styles.login_button} {...props} />
+);
