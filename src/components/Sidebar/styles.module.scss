@@ -1,0 +1,74 @@
+@use '/src/app/variables' as *;
+
+.sidebar_wrapper {
+  align-items: center;
+  background-color: $secondary-l;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 3;
+
+  @media (min-width: 768px) {
+    max-width: px2rem(400);
+  }
+
+  animation: showSidebar 300ms;
+
+  @keyframes showSidebar {
+    0% {
+      transform: translateX(px2rem(400));
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  &.hide_sidebar {
+    animation: hideSidebar 300ms;
+
+    @keyframes hideSidebar {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(px2rem(400));
+      }
+    }
+  }
+}
+
+.sidebar_layout {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: $special-black;
+  opacity: 0.65;
+  position: absolute;
+  z-index: 2;
+}
+
+.close_button {
+  flex: 0 1 auto;
+  margin-left: auto;
+}
+
+.sidebar_header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.sidebar_logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}

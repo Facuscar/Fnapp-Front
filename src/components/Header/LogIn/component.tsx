@@ -8,7 +8,7 @@ import ConfirmAccount from './ConfirmAccount';
 import EmailForm from './EmailForm';
 import RegisterForm from './RegisterForm';
 import LogInForm from './LogInForm';
-import * as S from './components';
+import { LogInButton } from './components';
 
 export enum LoginStep {
   EMAIL = 'email',
@@ -33,9 +33,9 @@ const LogInComponent: React.FC = () => {
 
   return (
     <>
-      <S.LogInButton onClick={openSidebar}>
+      <LogInButton onClick={openSidebar}>
         Log in
-      </S.LogInButton>
+      </LogInButton>
       {isFormVisible && (
         <Sidebar closeSidebar={closeSidebar}>
           {step === LoginStep.EMAIL && (

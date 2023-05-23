@@ -1,6 +1,6 @@
 import { type ReactNode, useState } from 'react';
 
-import * as S from './styles';
+import { SidebarLayout, SidebarWrapper, SidebarHeader, SidebarLogo, CloseButton } from './components';
 
 interface SidebarProps {
   closeSidebar: () => void
@@ -19,14 +19,14 @@ const Sidebar: React.FC<SidebarProps> = ({ children, closeSidebar }) => {
 
   return (
     <>
-      <S.SidebarLayout onClick={handleClick} />
-      <S.SidebarWrapper showSidebar={showSidebar}>
-        <S.SidebarHeader>
-          <S.SidebarLogo/>
-          <S.CloseButton onClick={handleClick}>X</S.CloseButton>
-        </S.SidebarHeader>
+      <SidebarLayout onClick={handleClick} />
+      <SidebarWrapper showSidebar={showSidebar}>
+        <SidebarHeader>
+          <SidebarLogo />
+          <CloseButton onClick={handleClick}>X</CloseButton>
+        </SidebarHeader>
         {children}
-      </S.SidebarWrapper>
+      </SidebarWrapper>
     </>
   );
 };
