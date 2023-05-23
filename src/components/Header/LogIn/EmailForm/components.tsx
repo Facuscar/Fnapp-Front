@@ -6,7 +6,7 @@ import Button, { type ButtonProps } from '@fnapp/components/Atoms/Button';
 import styles from './styles.module.scss';
 
 export const Form: React.FC<DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>> = (props) => (
- <form className={styles.form} />
+ <form className={styles.form} {...props} />
 );
 
 export const FormTitle: React.FC<{ children: string }> = ({ children }) => (

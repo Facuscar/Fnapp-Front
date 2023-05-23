@@ -6,7 +6,7 @@ import { LoginStep } from '@fnapp/components/Header/LogIn/component';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 import { validatePassword } from '@fnapp/utils/validatePassword';
 
-import * as S from './styles';
+import * as S from './components';
 
 interface RegisterFormProps {
   setStep: (step: LoginStep) => void
