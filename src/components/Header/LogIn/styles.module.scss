@@ -1,0 +1,12 @@
+@use '/src/app/variables' as *;
+
+.button {
+  display: flex;
+  align-items: center;
+
+  & svg {
+    height: px2rem(25);
+    margin-right: px2rem(10);
+    margin-bottom: px2rem(2);
+  }
+}

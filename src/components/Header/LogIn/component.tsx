@@ -8,7 +8,7 @@ import ConfirmAccount from './ConfirmAccount';
 import EmailForm from './EmailForm';
 import RegisterForm from './RegisterForm';
 import LogInForm from './LogInForm';
-import * as S from './styles';
+import * as S from './components';
 
 export enum LoginStep {
   EMAIL = 'email',
