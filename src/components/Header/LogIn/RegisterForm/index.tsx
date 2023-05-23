@@ -6,7 +6,7 @@ import { LoginStep } from '@fnapp/components/Header/LogIn/component';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 import { validatePassword } from '@fnapp/utils/validatePassword';
 
-import * as S from './components';
+import { Form, RegisterButton } from './components';
 
 interface RegisterFormProps {
   setStep: (step: LoginStep) => void
@@ -96,7 +96,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setStep }) => {
   }
 
   return (
-    <S.Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Input type='email' defaultValue={email} name='Email' disabled />
       <Input
         type='text'
@@ -122,13 +122,13 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setStep }) => {
         onChange={comparePasswords}
         ref={secondPasswordRef}
       />
-      <S.RegisterButton
+      <RegisterButton
         isLoading={isLoading}
         disabled={!validateForm()}
       >
         Register
-      </S.RegisterButton>
-    </S.Form>
+      </RegisterButton>
+    </Form>
   );
 };
 

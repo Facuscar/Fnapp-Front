@@ -1,1 +1,14 @@
 @use '/src/app/variables' as *;
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.button {
+  margin-top: $spacing-s;
+  font-style: px2rem(14);
+  width: 100%;
+}
