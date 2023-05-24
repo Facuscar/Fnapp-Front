@@ -1,8 +1,5 @@
 import { Roboto_Condensed } from 'next/font/google';
 
-import { Theme } from '@fnapp/theme';
-
-import StyledComponentsRegistry from './registry';
 import './globals.scss';
 
 export const metadata = {
@@ -21,14 +18,10 @@ export default function RootLayout ({
   children: React.ReactNode
 }) {
   return (
-      <html lang="en" className={robotoCondensed.className}>
-        <body>
-        <Theme>
-          <StyledComponentsRegistry>
-            {children}
-          </StyledComponentsRegistry>
-        </Theme>
-        </body>
-      </html>
+    <html lang="en" className={robotoCondensed.className}>
+      <body>
+        {children}
+      </body>
+    </html>
   );
 }
