@@ -1,0 +1,14 @@
+@use '/src/app/variables' as *;
+
+.home_page_wrapper {
+  max-width: px2rem(1200);
+  margin: 0 auto;
+}
+
+.h1 {
+  font-weight: 400;
+  text-transform: uppercase;
+  & span {
+    font-weight: 700;
+  }
+}
