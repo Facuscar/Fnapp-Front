@@ -5,9 +5,11 @@
   margin: 0 auto;
 }
 
-.h1 {
+.title {
+  color: $primary-s;
   font-weight: 400;
   text-transform: uppercase;
+  font-size: px2rem(50);
   & span {
     font-weight: 700;
   }
