@@ -6,7 +6,7 @@ import Heading from '@fnapp/components/Atoms/Heading';
 import styles from './styles.module.scss';
 
 export const Form: React.FC<DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>> = (props) => (
-  <form className={styles.form} />
+  <form className={styles.form} {...props} />
 );
 
 export const FormTitle: React.FC<{ children: string }> = ({ children }) => (
