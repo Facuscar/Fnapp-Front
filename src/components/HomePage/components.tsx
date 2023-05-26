@@ -15,7 +15,7 @@ export const MainWrapper: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
 );
 
 export const TextWrapper: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = (props) => (
-  <div {...props} />
+  <div className={styles.text_wrapper} {...props} />
 );
 
 export const SubTitle: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>> = (props) => (
