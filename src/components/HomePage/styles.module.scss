@@ -9,7 +9,7 @@
   color: $primary-s;
   font-weight: 400;
   text-transform: uppercase;
-  font-size: px2rem(91);
+  font-size: px2rem(65);
   & span {
     font-weight: 700;
   }
@@ -18,8 +18,23 @@
 
 .main_wrapper {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: $spacing-s;
-  padding: $spacing-l 0 0;
+  padding: $spacing-l $spacing-s 0;
+
+  @media (max-width: 1300px) {
+    & > img:last-of-type {
+      width: px2rem(200);
+      height: px2rem(400);
+    }
+
+    text-align: center;
+  }
+  
+  @media (min-width: 1300px) {
+    flex-direction: row;
+  }
 }
 
 .subtitle {
