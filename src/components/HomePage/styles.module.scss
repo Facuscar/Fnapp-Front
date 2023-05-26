@@ -1,7 +1,7 @@
 @use '/src/app/variables' as *;
 
 .home_page_wrapper {
-  max-width: px2rem(1200);
+  max-width: px2rem(1300);
   margin: 0 auto;
 }
 
@@ -18,7 +18,7 @@
 
 .main_wrapper {
   display: flex;
-  gap: $spacing-xs;
+  gap: $spacing-s;
   padding: $spacing-l 0 0;
 }
 
