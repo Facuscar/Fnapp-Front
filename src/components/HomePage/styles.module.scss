@@ -9,8 +9,20 @@
   color: $primary-s;
   font-weight: 400;
   text-transform: uppercase;
-  font-size: px2rem(50);
+  font-size: px2rem(91);
   & span {
     font-weight: 700;
   }
+}
+
+.main_wrapper {
+  display: flex;
+  gap: $spacing-xs;
+  padding: $spacing-l 0;
+}
+
+.subtitle {
+  color: $special-white;
+  font-weight: 400;
+  font-size: px2rem(27);
 }
