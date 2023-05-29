@@ -17,3 +17,15 @@
   font-style: px2rem(14);
   width: 100%;
 }
+
+.forgot_password {
+  margin-top: $spacing-l;
+  padding: $spacing-s;
+  color: $special-white;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &:not(:hover) {
+    background-color: transparent;
+  }
+}

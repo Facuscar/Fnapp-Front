@@ -4,7 +4,7 @@ import { useState, useRef, type FormEvent } from 'react';
 import Input from '@fnapp/components/Atoms/Form/Input';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 
-import { FormTitle, Form, LogInButton } from './components';
+import { FormTitle, Form, LogInButton, ForgotPasswordButton } from './components';
 
 interface LoginResponse {
   token: string
@@ -40,21 +40,26 @@ const LogInForm: React.FC = () => {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <FormTitle>
-        {`Hi ${name}! Please enter your password`}
-      </FormTitle>
-      <Input type='email' defaultValue={email} name='Email' disabled />
-      <Input
-        type='password'
-        name='Password'
-        onChange={validatePasswordInput}
-        ref={passwordRef}
-      />
-      <LogInButton disabled={!canSubmit}>
-        Log in
-      </LogInButton>
-    </Form>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <FormTitle>
+          {`Hi ${name}! Please enter your password`}
+        </FormTitle>
+        <Input type='email' defaultValue={email} name='Email' disabled />
+        <Input
+          type='password'
+          name='Password'
+          onChange={validatePasswordInput}
+          ref={passwordRef}
+        />
+        <LogInButton disabled={!canSubmit}>
+          Log in
+        </LogInButton>
+      </Form>
+      <ForgotPasswordButton>
+        I forgot my password
+      </ForgotPasswordButton>
+    </>
   )
 }
 

@@ -16,3 +16,7 @@ export const FormTitle: React.FC<{ children: string }> = ({ children }) => (
 export const LogInButton: React.FC<ButtonProps> = (props) => (
   <Button className={styles.login_button} {...props} />
 );
+
+export const ForgotPasswordButton: React.FC<ButtonProps> = (props) => (
+  <Button {...props} className={styles.forgot_password} />
+);
