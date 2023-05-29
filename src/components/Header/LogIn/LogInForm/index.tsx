@@ -6,6 +6,13 @@ import { useLogIn } from '@fnapp/context/LogInProvider';
 
 import { FormTitle, Form, LogInButton } from './components';
 
+interface LoginResponse {
+  token: string
+  _id: string
+  name: string
+  email: string
+}
+
 const LogInForm: React.FC = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const [canSubmit, setCanSubmit] = useState<boolean>(false);
@@ -18,7 +25,7 @@ const LogInForm: React.FC = () => {
     const password = passwordRef.current.value;
     void (async () => {
       try {
-        const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_USERS_URL}/login`, { email, password });
+        const { data } = await axios.post<LoginResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}/login`, { email, password });
       } catch (error: any) {
         if (error.response !== undefined) {
           setError(true);
