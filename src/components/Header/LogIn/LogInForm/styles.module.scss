@@ -20,12 +20,16 @@
 
 .forgot_password {
   margin-top: $spacing-l;
-  padding: $spacing-s;
   color: $special-white;
   font-weight: 700;
   text-transform: uppercase;
+  width: 100%;
 
   &:not(:hover) {
-    background-color: transparent;
+    background-color: $secondary-xs;
+  }
+
+  &:hover {
+    background-color: $secondary-s;
   }
 }

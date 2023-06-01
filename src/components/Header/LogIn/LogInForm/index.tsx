@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useRef, type FormEvent } from 'react';
 
+import Alert from '@fnapp/components/Atoms/Alert';
 import Input from '@fnapp/components/Atoms/Form/Input';
 import { useLogIn } from '@fnapp/context/LogInProvider';
 
@@ -11,10 +12,16 @@ interface LoginResponse {
   _id: string
   name: string
   email: string
-}
+};
+
+interface ForgotPasswordResponse {
+  msg: string
+};
 
 const LogInForm: React.FC = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
+  const [forgotPasswordMessage, setForgotPasswordMessage] = useState<string>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [canSubmit, setCanSubmit] = useState<boolean>(false);
   const { name, email, setError, setErrorMessage } = useLogIn();
 
@@ -39,6 +46,26 @@ const LogInForm: React.FC = () => {
     setCanSubmit(e.currentTarget.value.length > 0);
   }
 
+  const forgotPassword = () => {
+    void (async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.post<ForgotPasswordResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}/forgot-password`, { email });
+
+        setForgotPasswordMessage(data.msg);
+      } catch (error: any) {
+        if (error.response !== undefined) {
+          setForgotPasswordMessage(error.response.data.msg);
+          return;
+        }
+
+        setForgotPasswordMessage('Oops.. there was an error.');
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }
+
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -56,9 +83,10 @@ const LogInForm: React.FC = () => {
           Log in
         </LogInButton>
       </Form>
-      <ForgotPasswordButton>
+      <ForgotPasswordButton onClick={forgotPassword} isLoading={isLoading}>
         I forgot my password
       </ForgotPasswordButton>
+      {forgotPasswordMessage !== undefined && <Alert msg={forgotPasswordMessage} />}
     </>
   )
 }
