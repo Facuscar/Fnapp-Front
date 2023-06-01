@@ -1,0 +1,16 @@
+@use '/src/app/variables' as *;
+
+.form {
+  padding: $spacing-m;
+  max-width: px2rem(600);
+}
+
+.wrapper {
+  margin: $spacing-l auto;
+}
+
+.title {
+  text-align: center;
+  color: $primary-s;
+  text-transform: uppercase;
+}

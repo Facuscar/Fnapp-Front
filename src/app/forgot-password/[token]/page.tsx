@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-import { Header } from '@fnapp/components/Header/Header';
 import Alert from '@fnapp/components/Atoms/Alert';
+import { Header } from '@fnapp/components/Header/Header';
+import ForgotPasswordForm from '@fnapp/components/ForgotPasswordForm';
 
 interface PageProps {
   params: { token: string }
@@ -34,7 +35,9 @@ const Page: React.FC<PageProps> = async ({ params }) => {
   return (
     <>
       <Header />
-      { msg !== undefined && <Alert msg={msg} error />}
+      { msg !== undefined
+        ? <Alert msg={msg} error />
+        : <ForgotPasswordForm />}
     </>
   );
 };

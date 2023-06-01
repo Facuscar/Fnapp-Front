@@ -102,7 +102,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ setStep }) => {
         type='text'
         name='Name'
         placeholder='Your name'
-        ref={nameRef} hasError={nameError}
+        ref={nameRef}
+        hasError={nameError}
         errorMessage='This field cannot be empty'
         onChange={e => { setNameError(e.currentTarget.value.length === 0) }}
       />
