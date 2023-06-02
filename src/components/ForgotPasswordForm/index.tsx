@@ -16,7 +16,7 @@ const ForgotPasswordForm: React.FC = () => {
         Recover your password
       </Title>
       <Form>
-        <Input name='New password' type='password' ref={passwordRef} />
+        <Input name='New password' type='password' ref={passwordRef} autoComplete='new-password' />
         <Input name='Repeat your password' type='password' ref={secondPasswordRef} />
       </Form>
     </Wrapper>

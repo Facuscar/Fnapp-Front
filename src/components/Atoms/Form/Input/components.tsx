@@ -12,7 +12,7 @@ export const InputLabel: React.FC<DetailedHTMLProps<React.LabelHTMLAttributes<HT
 );
 
 export const FormInput = React.forwardRef<HTMLInputElement, InputProps>(({ hasError, ...props }, ref) => {
-  const classNames = styles.form_input + ' ' + (hasError ? styles.error : '');
+  const classNames = styles.form_input + ' ' + (hasError !== undefined ? styles.error : '');
 
   return (
     <input className={classNames} {...props} ref={ref} />

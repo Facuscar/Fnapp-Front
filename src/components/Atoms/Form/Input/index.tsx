@@ -1,8 +1,8 @@
-import React, { type HTMLAttributes } from 'react';
+import React, { type DetailedHTMLProps, type InputHTMLAttributes } from 'react';
 
 import { InputWrapper, InputLabel, FormInput, ErrorMessage } from './components';
 
-export type InputProps = HTMLAttributes<HTMLInputElement> & {
+export type InputProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
   name: string
   type: 'text' | 'number' | 'password' | 'search' | 'email'
   id?: string
