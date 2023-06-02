@@ -4,7 +4,7 @@ import { useRef } from 'react';
 
 import Input from '@fnapp/components/Atoms/Form/Input';
 
-import { Form, Title, Wrapper } from './components';
+import { Form, Title, Wrapper, SubmitButton } from './components';
 
 const ForgotPasswordForm: React.FC = () => {
   const passwordRef = useRef<HTMLInputElement>(null)
@@ -18,6 +18,7 @@ const ForgotPasswordForm: React.FC = () => {
       <Form>
         <Input name='New password' type='password' ref={passwordRef} autoComplete='new-password' />
         <Input name='Repeat your password' type='password' ref={secondPasswordRef} />
+        <SubmitButton>Reset password</SubmitButton>
       </Form>
     </Wrapper>
   );

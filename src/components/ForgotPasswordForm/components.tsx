@@ -1,6 +1,7 @@
 import { type DetailedHTMLProps, type FormHTMLAttributes, type HTMLAttributes } from 'react';
 
 import Heading from '@fnapp/components/Atoms/Heading';
+import Button, { type ButtonProps } from '@fnapp/components/Atoms/Button'
 
 import styles from './styles.module.scss';
 
@@ -17,3 +18,7 @@ export const Title: React.FC<{ children: string }> = ({ children }) => (
 export const Wrapper: React.FC<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>> = (props) => (
   <div className={styles.wrapper} {...props} />
 )
+
+export const SubmitButton: React.FC<ButtonProps> = (props) => (
+  <Button type='submit' {...props} />
+);
