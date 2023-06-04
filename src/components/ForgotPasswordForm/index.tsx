@@ -38,7 +38,9 @@ const ForgotPasswordForm: React.FC<{ token: string }> = ({ token }) => {
         setError(true);
         if (error.response !== undefined) {
           setMessage(error.response.data.msg);
+          return;
         }
+        setMessage('Oops.. there was an error.')
       } finally {
         setShowAlert(true);
         setIsLoading(false);
