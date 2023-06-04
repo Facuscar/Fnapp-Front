@@ -1,5 +1,6 @@
 'use client';
 
+import axios from 'axios';
 import { useRef, useState, type SyntheticEvent } from 'react';
 
 import Input from '@fnapp/components/Atoms/Form/Input';
@@ -7,7 +8,8 @@ import { validatePassword } from '@fnapp/utils/validatePassword';
 
 import { Form, Title, Wrapper, SubmitButton } from './components';
 
-const ForgotPasswordForm: React.FC = () => {
+const ForgotPasswordForm: React.FC<{ token: string }> = ({ token }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
   const [secondPasswordError, setSecondPasswordError] = useState<boolean>(false);
 
@@ -18,6 +20,17 @@ const ForgotPasswordForm: React.FC = () => {
     const password = passwordRef.current?.value;
 
     if (password === undefined) return;
+    void (async () => {
+      setIsLoading(true);
+      try {
+        const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_USERS_URL}/forgot-password/${token}`, { password });
+        console.log(data);
+      } catch (error) {
+        console.log(error.response);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   }
 
   const validatePasswordInput = (password: string) => {
@@ -70,7 +83,7 @@ const ForgotPasswordForm: React.FC = () => {
           hasError={secondPasswordError}
           errorMessage='Passwords do not match'
         />
-        <SubmitButton>Reset password</SubmitButton>
+        <SubmitButton isLoading={isLoading}>Reset password</SubmitButton>
       </Form>
     </Wrapper>
   );

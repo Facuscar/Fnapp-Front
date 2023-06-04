@@ -37,7 +37,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
       <Header />
       { msg !== undefined
         ? <Alert msg={msg} error />
-        : <ForgotPasswordForm />}
+        : <ForgotPasswordForm token={token} /> }
     </>
   );
 };
