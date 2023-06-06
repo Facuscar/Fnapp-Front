@@ -4,6 +4,7 @@ import { useState, useRef, type FormEvent } from 'react';
 import Alert from '@fnapp/components/Atoms/Alert';
 import Input from '@fnapp/components/Atoms/Form/Input';
 import { useLogIn } from '@fnapp/context/LogInProvider';
+import { setInStorage } from '@fnapp/utils/localStorage';
 
 import { FormTitle, Form, LogInButton, ForgotPasswordButton } from './components';
 
@@ -33,6 +34,10 @@ const LogInForm: React.FC = () => {
     void (async () => {
       try {
         const { data } = await axios.post<LoginResponse>(`${process.env.NEXT_PUBLIC_API_USERS_URL}/login`, { email, password });
+
+        const { token } = data;
+
+        setInStorage('token', token);
       } catch (error: any) {
         if (error.response !== undefined) {
           setError(true);
