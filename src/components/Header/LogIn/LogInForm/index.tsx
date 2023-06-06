@@ -1,10 +1,10 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { useState, useRef, type FormEvent } from 'react';
 
 import Alert from '@fnapp/components/Atoms/Alert';
 import Input from '@fnapp/components/Atoms/Form/Input';
 import { useLogIn } from '@fnapp/context/LogInProvider';
-import { setInStorage } from '@fnapp/utils/localStorage';
 
 import { FormTitle, Form, LogInButton, ForgotPasswordButton } from './components';
 
@@ -37,7 +37,7 @@ const LogInForm: React.FC = () => {
 
         const { token } = data;
 
-        setInStorage('token', token);
+        Cookies.set('authToken', token, { expires: 7 })
       } catch (error: any) {
         if (error.response !== undefined) {
           setError(true);
